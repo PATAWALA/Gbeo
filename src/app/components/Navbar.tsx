@@ -77,12 +77,11 @@ export default function Navbar() {
   return (
     <>
       {/* Barre de navigation principale */}
-      {/* Barre de navigation principale */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-6 w-full z-50 px-4 overflow-hidden ${scrolled ? 'py-1' : 'py-1'}`}
+        className={`fixed top-3 w-full z-50 px-4 overflow-hidden ${scrolled ? 'py-1' : 'py-1'}`}
       >
         <div className="flex justify-center w-full">
           <div className={`w-full max-w-6xl rounded-2xl backdrop-blur-lg transition-all duration-300 overflow-hidden ${
@@ -96,26 +95,26 @@ export default function Navbar() {
           }`}>
             <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 py-3">
               
-              {/* Logo */}
+              {/* Logo - MODIFIÉ pour montrer le nom sur mobile */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
+                className="flex items-center gap-2 md:gap-3 cursor-pointer group flex-shrink-0"
                 onClick={() => scrollToSection("hero")}
               >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${
+                <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-lg ${
                   theme === 'dark'
                     ? 'bg-gradient-to-br from-orange-500 to-amber-500'
                     : 'bg-gradient-to-br from-orange-400 to-amber-400'
                 }`}>
-                  <Sparkles className="text-white" size={20} />
+                  <Sparkles className="text-white w-4 h-4 md:w-5 md:h-5" />
                 </div>
-                <div className="hidden sm:flex flex-col">
-                  <span className={`font-bold text-lg leading-tight ${
+                <div className="flex flex-col">
+                  <span className={`font-bold text-sm md:text-base lg:text-lg leading-tight whitespace-nowrap ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
                     Média Créa Plus
                   </span>
-                  <span className="text-xs text-orange-500 font-medium">
+                  <span className="text-[10px] md:text-xs text-orange-500 font-medium hidden xs:inline">
                     Créations Digitales
                   </span>
                 </div>
@@ -155,7 +154,7 @@ export default function Navbar() {
               </div>
 
               {/* Boutons d'action à droite */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3">
                 {/* Bouton WhatsApp - UNIQUEMENT sur desktop (lg et plus) */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -172,28 +171,28 @@ export default function Navbar() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={toggleTheme}
-                  className={`p-2 rounded-lg transition-all duration-300 ${
+                  className={`p-1.5 md:p-2 rounded-lg transition-all duration-300 ${
                     theme === 'dark'
                       ? 'bg-gray-800 text-amber-300 hover:bg-gray-700'
                       : 'bg-gray-100 text-amber-600 hover:bg-gray-200'
                   }`}
                   aria-label={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
                 >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                  {theme === 'dark' ? <Sun size={18} className="md:w-5 md:h-5" /> : <Moon size={18} className="md:w-5 md:h-5" />}
                 </motion.button>
 
                 {/* Bouton menu hamburger - VISIBLE sur mobile et tablette */}
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className={`lg:hidden p-2 rounded-lg transition-colors ${
+                  className={`lg:hidden p-1.5 md:p-2 rounded-lg transition-colors ${
                     theme === 'dark'
                       ? 'text-gray-300 hover:bg-gray-800'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`}
                   aria-label="Ouvrir le menu de navigation"
                 >
-                  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                  {isMenuOpen ? <X size={20} className="md:w-6 md:h-6" /> : <Menu size={20} className="md:w-6 md:h-6" />}
                 </motion.button>
               </div>
             </div>
@@ -203,7 +202,7 @@ export default function Navbar() {
 
       {/* Menu sidebar - VISIBLE sur mobile et tablette */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div 
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}

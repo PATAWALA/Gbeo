@@ -64,7 +64,7 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-<section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 overflow-hidden">
+<section id="hero" className="pt-40 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6 overflow-hidden">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
