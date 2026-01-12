@@ -77,14 +77,15 @@ export default function Navbar() {
   return (
     <>
       {/* Barre de navigation principale */}
+      {/* Barre de navigation principale */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-6 w-full z-50 px-4 ${scrolled ? 'py-1' : 'py-1'}`}
+        className={`fixed top-6 w-full z-50 px-4 overflow-hidden ${scrolled ? 'py-1' : 'py-1'}`}
       >
-        <div className="flex justify-center">
-          <div className={`w-full max-w-6xl rounded-2xl backdrop-blur-lg transition-all duration-300 ${
+        <div className="flex justify-center w-full">
+          <div className={`w-full max-w-6xl rounded-2xl backdrop-blur-lg transition-all duration-300 overflow-hidden ${
             theme === 'dark'
               ? scrolled
                 ? 'bg-gray-900/95 border border-gray-800 shadow-2xl shadow-black/40'

@@ -3,6 +3,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import Image from "next/image";
 import { 
   Send, 
   BarChart3, 
@@ -63,66 +64,66 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-      <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4">
-  <div className="container mx-auto max-w-4xl">
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      className="text-center"
-    >
-      {/* Titre principal */}
-      <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
-        theme === 'dark' ? 'text-white' : 'text-gray-900'
-      }`}>
-        <span className="block">Rendez votre activité</span>
-        <span className="text-gradient-orange">visible et florissante</span>
-      </h1>
+<section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-24 px-4 sm:px-6 overflow-hidden">
+        <div className="container mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-center"
+          >
+            {/* Titre principal */}
+            <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              <span className="block">Rendez votre activité</span>
+              <span className="text-gradient-orange">visible et florissante</span>
+            </h1>
 
-      {/* Description */}
-      <p className={`text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed ${
-        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-      }`}>
-        Nous vous accompagnons dans <span className="font-semibold text-emerald-600 dark:text-emerald-400">l'explosion de votre business</span> à travers nos services de visibilité digitale.
-      </p>
+            {/* Description */}
+            <p className={`text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed px-4 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
+              Nous vous accompagnons dans <span className="font-semibold text-emerald-600 dark:text-emerald-400">l'explosion de votre business</span> à travers nos services de visibilité digitale.
+            </p>
 
-      {/* Boutons d'action - Pleinement arrondis et même longueur */}
-      <div className="flex flex-col sm:flex-row gap-6 justify-center">
-        {/* Bouton principal - Orange vif */}
-        <motion.button
-          whileHover={{ scale: 1.03, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          className="px-10 py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 focus:ring-4 focus:ring-orange-500/30 focus:outline-none shadow-lg hover:shadow-xl min-w-[240px]"
-          aria-label="Discuter de votre projet avec Média Créa Plus"
-        >
-          Discutons de votre projet
-        </motion.button>
-        
-        {/* Bouton secondaire - Bleu professionnel avec texte visible en dark mode */}
-        <motion.button
-          whileHover={{ scale: 1.03, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-          className="px-10 py-4 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-200 font-semibold rounded-full border-2 border-blue-200 dark:border-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/60 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 focus:ring-4 focus:ring-blue-500/30 focus:outline-none min-w-[240px]"
-          aria-label="Voir les offres de services de Média Créa Plus"
-        >
-          Voir nos offres
-        </motion.button>
-      </div>
+            {/* Boutons d'action - CORRIGÉS POUR ÊTRE PRO */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
+              {/* Bouton principal - Orange vif */}
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 focus:ring-4 focus:ring-orange-500/30 focus:outline-none shadow-lg hover:shadow-xl"
+                aria-label="Discuter de votre projet avec Média Créa Plus"
+              >
+                Discutons de votre projet
+              </motion.button>
+              
+              {/* Bouton secondaire - Bleu professionnel avec texte visible en dark mode */}
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+                className="w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-200 font-semibold rounded-full border-2 border-blue-200 dark:border-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/60 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 focus:ring-4 focus:ring-blue-500/30 focus:outline-none"
+                aria-label="Voir les offres de services de Média Créa Plus"
+              >
+                Voir nos offres
+              </motion.button>
+            </div>
 
-      {/* Points décoratifs colorés */}
-      <div className="flex justify-center gap-8 mt-20">
-        <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
-        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse animation-delay-200"></div>
-        <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse animation-delay-400"></div>
-        <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse animation-delay-600"></div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+            {/* Points décoratifs colorés */}
+            <div className="flex justify-center gap-8 mt-20">
+              <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse animation-delay-200"></div>
+              <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse animation-delay-400"></div>
+              <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse animation-delay-600"></div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
       {/* Section Services */}
-      <section id="services" className={`py-16 px-4 transition-colors duration-300 ${
+      <section id="services" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
         theme === 'dark' ? 'bg-gray-900' : 'bg-white'
       }`}>
         <div className="container mx-auto max-w-6xl">
@@ -225,12 +226,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div>             
         </div>
       </section>
 
       {/* Section À propos */}
-      <section id="about" className={`py-16 px-4 transition-colors duration-300 ${
+      <section id="about" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
         theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
       }`}>
         <div className="container mx-auto max-w-6xl">
@@ -343,7 +344,7 @@ export default function Home() {
       </section>
 
       {/* Section Témoignages */}
-      <section id="temoignages" className={`py-16 px-4 transition-colors duration-300 ${
+      <section id="temoignages" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
         theme === 'dark' ? 'bg-gray-900' : 'bg-white'
       }`}>
         <div className="container mx-auto max-w-6xl">
@@ -394,7 +395,7 @@ export default function Home() {
       </section>
 
       {/* Section Contact - MODIFIÉE POUR NE PAS ÊTRE NOIRE PAR DÉFAUT */}
-      <section id="contact" className={`py-16 px-4 transition-colors duration-300 ${
+      <section id="contact" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
         theme === 'dark' 
           ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
           : 'bg-gradient-to-br from-gray-50 to-blue-50'

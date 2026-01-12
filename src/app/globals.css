@@ -13,7 +13,16 @@
     --foreground: #ededed;
   }
 }
+/* Correction du débordement horizontal sur mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
+body {
+  width: 100%;
+  position: relative;
+}
 body {
   background: var(--background);
   color: var(--foreground);
@@ -49,4 +58,43 @@ button:focus-visible {
   .animate-pulse {
     animation: none;
   }
+}
+
+/* Animations pour les points décoratifs */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Pour le gradient du titre */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Assure que la page ne scroll pas quand le menu mobile est ouvert */
+body.menu-open {
+  overflow: hidden;
 }
