@@ -7,15 +7,19 @@ import Image from "next/image";
 import { 
   Send, 
   BarChart3, 
+  Award,
   Facebook,
+  Handshake,
   PenTool, 
   Video, 
   Instagram,
+  X,  
+  Users ,
   ChevronRight,
   CheckCircle,
   Mail,
   ArrowRight,
-  TrendingUp,
+  TrendingUp,Maximize,
   Eye,
   Sparkles,
   Target,
@@ -64,285 +68,955 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-<section id="hero" className="pt-40 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6 overflow-hidden">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center"
-          >
-            {/* Titre principal */}
-            <h1 className={`text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${
+<section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
+  {/* Background décoratif */}
+  <div className="absolute inset-0 z-0">
+    <div className={`absolute inset-0 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950' 
+        : 'bg-gradient-to-b from-white via-blue-50/30 to-gray-50'
+    }`} />
+    
+    {/* Éléments décoratifs */}
+    <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+  </div>
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="text-center max-w-5xl mx-auto"
+    >
+      {/* Badge d'introduction */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 mb-8"
+      >
+        <Sparkles className="w-4 h-4 text-orange-500" />
+        <span className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+        }`}>
+          Agence de Création Digitale d'Excellence
+        </span>
+      </motion.div>
+
+      {/* Titre principal - IMPACTANT */}
+      <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        <span className="block">Transformez Votre</span>
+        <span className="text-gradient-orange">Visibilité Digitale</span>
+        <span className="block mt-2">en Réussite Concrète</span>
+      </h1>
+
+      {/* Description PERCUTANTE */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className={`text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+        }`}
+      >
+        Nous propulsons votre activité vers de nouveaux sommets grâce à des stratégies digitales 
+        <span className={`font-semibold ${
+          theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
+        }`}> sur-mesure </span>
+        qui génèrent des résultats 
+        <span className={`font-semibold ${
+          theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+        }`}> mesurables</span> et durables.
+      </motion.p>
+
+      {/* Stats rapides pour crédibilité */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+        className="flex flex-wrap justify-center gap-6 md:gap-12 mb-12"
+      >
+        <div className="text-center">
+          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
+            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+          }`}>
+            +150%
+          </div>
+          <div className={`text-sm font-medium ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Augmentation Leads
+          </div>
+        </div>
+        <div className="text-center">
+          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
+            theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+          }`}>
+            3+ ans
+          </div>
+          <div className={`text-sm font-medium ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            d'Expertise
+          </div>
+        </div>
+        <div className="text-center">
+          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
+            theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
+          }`}>
+            98%
+          </div>
+          <div className={`text-sm font-medium ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Satisfaction
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Boutons d'action - PROFESSIONNELS */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+      >
+        {/* Bouton principal - Call to Action fort */}
+        <motion.button
+          whileHover={{ 
+            scale: 1.05, 
+            y: -2,
+            boxShadow: "0 20px 40px rgba(249, 115, 22, 0.3)"
+          }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => document.getElementById("contact")?.scrollIntoView({ 
+            behavior: "smooth",
+            block: "start"
+          })}
+          className="group relative px-8 py-4 md:px-10 md:py-5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl transition-all duration-300 shadow-2xl shadow-orange-500/30 hover:shadow-orange-500/50 focus:outline-none focus:ring-4 focus:ring-orange-500/40"
+          aria-label="Discuter de votre projet avec Média Créa Plus - Prendre rendez-vous"
+        >
+          <span className="relative z-10 flex items-center gap-2">
+            Discutons de votre projet
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.button>
+
+        {/* Bouton secondaire - Élégant et professionnel */}
+        <motion.button
+          whileHover={{ 
+            scale: 1.05, 
+            y: -2,
+            boxShadow: "0 20px 40px rgba(37, 99, 235, 0.15)"
+          }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => document.getElementById("services")?.scrollIntoView({ 
+            behavior: "smooth",
+            block: "start"
+          })}
+          className={`group relative px-8 py-4 md:px-10 md:py-5 font-bold rounded-xl transition-all duration-300 shadow-xl focus:outline-none focus:ring-4 ${
+            theme === 'dark'
+              ? 'bg-gray-800/80 border border-gray-700 text-gray-200 hover:bg-gray-700/80 hover:border-gray-600 focus:ring-blue-500/40'
+              : 'bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 focus:ring-blue-500/30'
+          }`}
+          aria-label="Découvrir nos services et offres"
+        >
+          <span className="relative z-10 flex items-center gap-2">
+            Découvrir nos solutions
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </span>
+        </motion.button>
+      </motion.div>
+
+      {/* Témoignage rapide pour confiance */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className={`max-w-2xl mx-auto p-6 rounded-2xl backdrop-blur-sm border ${
+          theme === 'dark'
+            ? 'bg-gray-800/30 border-gray-700/50'
+            : 'bg-white/50 border-gray-200/50'
+        }`}
+      >
+        <div className="flex items-center gap-4 mb-4">
+          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
+            theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
+          }`}>
+            <MessageCircle className={`w-6 h-6 ${
+              theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+            }`} />
+          </div>
+          <div className="text-left">
+            <p className={`font-medium ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              <span className="block">Rendez votre activité</span>
-              <span className="text-gradient-orange">visible et florissante</span>
-            </h1>
-
-            {/* Description */}
-            <p className={`text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed px-4 ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              Nous vous accompagnons dans <span className="font-semibold text-emerald-600 dark:text-emerald-400">l'explosion de votre business</span> à travers nos services de visibilité digitale.
+              "Une transformation totale de notre communication"
             </p>
-
-            {/* Boutons d'action - CORRIGÉS POUR ÊTRE PRO */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
-              {/* Bouton principal - Orange vif */}
-              <motion.button
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 focus:ring-4 focus:ring-orange-500/30 focus:outline-none shadow-lg hover:shadow-xl"
-                aria-label="Discuter de votre projet avec Média Créa Plus"
-              >
-                Discutons de votre projet
-              </motion.button>
-              
-              {/* Bouton secondaire - Bleu professionnel avec texte visible en dark mode */}
-              <motion.button
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-                className="w-full sm:w-auto px-8 py-3 md:px-10 md:py-4 bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-200 font-semibold rounded-full border-2 border-blue-200 dark:border-blue-600 hover:bg-blue-100 dark:hover:bg-blue-900/60 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 focus:ring-4 focus:ring-blue-500/30 focus:outline-none"
-                aria-label="Voir les offres de services de Média Créa Plus"
-              >
-                Voir nos offres
-              </motion.button>
-            </div>
-
-            {/* Points décoratifs colorés */}
-            <div className="flex justify-center gap-8 mt-20">
-              <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></div>
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse animation-delay-200"></div>
-              <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse animation-delay-400"></div>
-              <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse animation-delay-600"></div>
-            </div>
-          </motion.div>
+            <p className={`text-sm ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              Alexandre K., Directeur Marketing
+            </p>
+          </div>
         </div>
-      </section>
-      {/* Section Services */}
-      <section id="services" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
-        theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+        <p className={`text-sm italic ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+        }`}>
+          "Média Créa Plus a multiplié notre visibilité par 3 en seulement 2 mois."
+        </p>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="mt-16 flex flex-col items-center"
+      >
+        <span className={`text-sm font-medium mb-3 ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          Découvrez nos solutions
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className={`w-6 h-10 rounded-full border-2 flex items-start justify-center p-1 ${
+            theme === 'dark' 
+              ? 'border-gray-600' 
+              : 'border-gray-300'
+          }`}
+        >
+          <div className={`w-1 h-2 rounded-full ${
+            theme === 'dark' ? 'bg-gray-400' : 'bg-gray-400'
+          }`} />
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
+
+{/* Section Problèmes */}
+<section id="problemes" className="py-16 md:py-24 px-4">
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
       }`}>
-        <div className="container mx-auto max-w-6xl">
+        Vous reconnaissez-vous dans <span className="text-gradient-orange">ces situations</span> ?
+      </h2>
+      <p className={`text-xl max-w-3xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Les défis les plus courants que rencontrent nos clients avant de nous contacter
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Invisibilité Digitale",
+          description: "Votre activité existe mais personne ne la trouve en ligne",
+          symptomes: ["Pas de trafic sur votre site", "Aucune visibilité sur les réseaux", "Prospects qui ne vous connaissent pas"],
+          icon: <Eye className="w-6 h-6" />
+        },
+        {
+          title: "Stratégie Floue",
+          description: "Vous postez sans plan ni objectifs clairs",
+          symptomes: ["Contenu qui n'engage pas", "Pas de leads qualifiés", "Temps perdu sans résultats"],
+          icon: <Target className="w-6 h-6" />
+        },
+        {
+          title: "Ressources Limitées",
+          description: "Vous gérez tout seul et vous êtes débordé",
+          symptomes: ["Pas le temps de créer du contenu", "Budget publicitaire inefficace", "Fatigue et découragement"],
+          icon: <TrendingUp className="w-6 h-6" />
+        },
+        {
+          title: "Pas de Conversion",
+          description: "Du trafic mais aucune vente",
+          symptomes: ["Visiteurs qui ne deviennent pas clients", "Taux de conversion faible", "ROI indéfini"],
+          icon: <BarChart3 className="w-6 h-6" />
+        },
+        {
+          title: "Image Incohérente",
+          description: "Identité visuelle qui ne reflète pas votre valeur",
+          symptomes: ["Design amateur", "Message confus", "Marque qui ne marque pas"],
+          icon: <Sparkles className="w-6 h-6" />
+        },
+        {
+          title: "Concurrence Agressive",
+          description: "Vos concurrents dominent le marché",
+          symptomes: ["Ils sont partout, vous nulle part", "Ils innovent, vous stagnez", "Perte de parts de marché"],
+          icon: <Video className="w-6 h-6" />
+        }
+      ].map((probleme, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 }}
+          className={`p-8 rounded-2xl border-2 transition-all duration-300 hover:scale-[1.02] ${
+            theme === 'dark'
+              ? 'bg-gray-800/50 border-gray-700 hover:border-orange-500'
+              : 'bg-white border-gray-200 hover:border-orange-400'
+          }`}
+        >
+          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6 ${
+            theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
+          }`}>
+            <div className="text-orange-500">{probleme.icon}</div>
+          </div>
+          
+          <h3 className={`text-xl font-bold mb-3 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            {probleme.title}
+          </h3>
+          
+          <p className={`mb-4 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            {probleme.description}
+          </p>
+          
+          <div className="space-y-2">
+            {probleme.symptomes.map((symptome, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <X className={`w-4 h-4 mt-1 flex-shrink-0 ${
+                  theme === 'dark' ? 'text-red-400' : 'text-red-500'
+                }`} />
+                <span className={`text-sm ${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                }`}>
+                  {symptome}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Transition vers la solution - MODIFIÉE */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className={`mt-16 p-8 rounded-2xl text-center ${
+        theme === 'dark'
+          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
+          : 'bg-gradient-to-r from-blue-50 to-orange-50'
+      }`}
+    >
+      <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        <span className="text-gradient-orange">Média Créa Plus</span> peut sûrement répondre à votre problème
+      </h3>
+      <p className={`text-lg mb-6 max-w-2xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Nous avons accompagné de nombreux entrepreneurs et dirigeants à surmonter ces défis. Et si votre tour était le prochain ?
+      </p>
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => document.getElementById("solutions")?.scrollIntoView({ behavior: "smooth" })}
+        className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-full shadow-lg shadow-orange-500/30"
+      >
+        Découvrir nos solutions <ArrowRight className="w-5 h-5" />
+      </motion.button>
+    </motion.div>
+  </div>
+</section>
+
+{/* Section Solutions */}
+<section id="solutions" className="py-16 md:py-24 px-4">
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        <span className="text-gradient-orange">Média Créa Plus</span> vous propose ces solutions sur mesure
+      </h2>
+      <p className={`text-xl max-w-3xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Des packages exclusifs conçus pour résoudre vos défis digitaux et maximiser vos résultats
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Pack Visibilité Premium",
+          description: "Identité visuelle complète + Stratégie réseaux sociaux + Campagnes publicitaires optimisées",
+          benefices: [
+            "Triple votre visibilité en 90 jours maximum",
+            "Design professionnel qui reflète votre excellence",
+            "Flux constant de leads qualifiés"
+          ],
+          cta: "Obtenir ce pack Premium",
+          icon: <Eye className="w-8 h-8" />,
+          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nJe suis intéressé(e) par votre Pack Visibilité Premium.\n\nPourriez-vous me contacter pour en discuter ?",
+          recommandation: "Idéal pour les entreprises qui souhaitent une présence digitale complète et cohérente"
+        },
+        {
+          title: "Transformation Digitale Excellence",
+          description: "Audit stratégique complet + Refonte totale + Accompagnement sur 6 mois",
+          benefices: [
+            "Diagnostic approfondi avec plan d'action détaillé",
+            "Stratégie personnalisée pour dominer votre marché",
+            "Résultats garantis avec suivi hebdomadaire"
+          ],
+          cta: "Transformer mon activité",
+          icon: <TrendingUp className="w-8 h-8" />,
+          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nJe souhaite une Transformation Digitale Excellence pour mon activité.\n\nPouvons-nous en parler ?",
+          recommandation: "Parfait pour les entreprises en phase de croissance ou de repositionnement"
+        },
+        {
+          title: "Content Factory Elite",
+          description: "Création de contenu mensuel illimité + Community Management premium + Growth hacking",
+          benefices: [
+            "30+ posts stratégiques optimisés mensuellement",
+            "Reels professionnels et vidéos engageantes",
+            "Growth hacking avancé pour exploser votre audience"
+          ],
+          cta: "Boost mon contenu",
+          icon: <Video className="w-8 h-8" />,
+          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nLe Content Factory Elite m'intéresse pour développer ma présence digitale.\n\nPouvez-vous me donner plus d'informations ?",
+          recommandation: "Recommandé pour maintenir une présence régulière et engageante"
+        }
+      ].map((solution, index) => {
+        const handleSolutionClick = () => {
+          const phoneNumber = "+22501809886";
+          const message = encodeURIComponent(solution.whatsappMessage);
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+          window.open(whatsappUrl, '_blank');
+        };
+
+        return (
           <motion.div
+            key={index}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              Mes <span className="text-blue-500">services</span>
-            </h2>
-            <p className={`max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              Une offre complète pour booster votre présence digitale et transformer 
-              vos visiteurs en clients fidèles.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {/* Conception Graphique */}
-            <ServiceItem
-              title="Conception graphique"
-              description="Création d'identités visuelles percutantes : Affiches, flyers professionnels, carrousels optimisés, visuels mensuels et stories engageantes."
-            />
-            
-            {/* Gestion de campagnes */}
-            <ServiceItem
-              title="Gestion de campagnes publicitaires"
-              description="Configuration et optimisation de campagnes Facebook/Instagram. Spécialisé lead generation et conversion avec suivi mensuel."
-            />
-            
-            {/* Stratégie & rédaction */}
-            <ServiceItem
-              title="Stratégie & rédaction de contenu"
-              description="Textes optimisés SEO, storytelling impactant, message de marque authentique et scripts vidéo qui convertissent."
-            />
-            
-            {/* Création vidéo */}
-            <ServiceItem
-              title="Création de visuels & vidéos"
-              description="Production de Reels percutants, montage vidéo sur mesure et packs mensuels pour une présence constante."
-            />
-            
-            {/* Community Management */}
-            <ServiceItem
-              title="Community Management"
-              description="Animation et modération de vos communautés, création de contenu engageant, stratégie de croissance sociale."
-            />
-            
-            {/* Audit & Conseil */}
-            <ServiceItem
-              title="Audit & Stratégie digitale"
-              description="Analyse complète de votre présence en ligne, plan d'action personnalisé et accompagnement sur mesure."
-            />
-          </div>
-
-          {/* Processus */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className={`rounded-2xl p-8 md:p-12 transition-colors duration-300 ${
+            transition={{ delay: index * 0.1 }}
+            className={`rounded-2xl overflow-hidden border-2 transition-all duration-300 hover:shadow-2xl ${
               theme === 'dark'
-                ? 'bg-gradient-to-r from-gray-800 to-gray-900'
-                : 'bg-gradient-to-r from-blue-50 to-indigo-50'
+                ? 'bg-gradient-to-b from-gray-800 to-gray-900 border-gray-700 hover:border-orange-500'
+                : 'bg-gradient-to-b from-white to-gray-50 border-gray-200 hover:border-orange-400'
             }`}
           >
-            <h3 className={`text-2xl font-bold mb-8 text-center ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              Mon <span className="text-blue-500">processus</span> en 4 étapes
-            </h3>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { icon: <MessageCircle className="text-blue-500" />, title: "Audit & Brief", desc: "Analyse de vos besoins" },
-                { icon: <PenTool className="text-blue-500" />, title: "Stratégie", desc: "Plan d'action personnalisé" },
-                { icon: <Target className="text-blue-500" />, title: "Exécution", desc: "Création & optimisation" },
-                { icon: <BarChart3 className="text-blue-500" />, title: "Suivi", desc: "Analyse des résultats" }
-              ].map((step, index) => (
-                <div key={index} className="text-center">
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full shadow-sm mb-4 transition-colors ${
-                    theme === 'dark' ? 'bg-gray-700' : 'bg-white'
-                  }`}>
-                    {step.icon}
-                  </div>
-                  <h4 className={`font-semibold mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {step.title}
-                  </h4>
-                  <p className={`text-sm ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                  }`}>
-                    {step.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </motion.div>             
-        </div>
-      </section>
-
-      {/* Section À propos */}
-      <section id="about" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
-        theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'
-      }`}>
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
+            <div className="p-8">
+              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+                theme === 'dark' ? 'bg-gradient-to-br from-orange-500/20 to-amber-500/20' : 'bg-gradient-to-br from-orange-100 to-amber-100'
+              }`}>
+                <div className="text-orange-500">{solution.icon}</div>
+              </div>
+              
+              <h3 className={`text-2xl font-bold mb-4 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Ninsemouh <span className="text-blue-500">GbéO</span>
-              </h2>
-              <p className={`mb-6 leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                {solution.title}
+              </h3>
+              
+              <p className={`mb-6 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                Copywriter passionné et stratège digital, je transforme vos idées en messages 
-                percutants qui résonnent avec votre audience. Avec plus de 3 ans d'expérience, 
-                j'ai accompagné des entreprises comme <span className="font-semibold">AG Expert Consulting International</span> 
-                et d'autres structures dans leur développement digital.
-              </p>
-              <p className={`mb-8 leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-              }`}>
-                Mon expertise ? Trouver l'angle parfait, les mots justes et la stratégie 
-                optimale pour maximiser votre visibilité et vos conversions.
+                {solution.description}
               </p>
               
-              <div className="space-y-4">
-                {[
-                  "Expert en communication digitale",
-                  "Spécialiste Facebook/Instagram Ads",
-                  "Storyteller & brand strategist",
-                  "Community Manager expérimenté"
-                ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="text-green-500" size={20} />
+              <div className="space-y-3 mb-8">
+                {solution.benefices.map((benefice, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
                     <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
-                      {item}
+                      {benefice}
                     </span>
                   </div>
                 ))}
               </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className={`rounded-2xl p-8 transition-colors duration-300 ${
-                theme === 'dark'
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-900 text-white'
-                  : 'bg-gradient-to-br from-blue-500 to-blue-600 text-white'
-              }`}
-            >
-              <h3 className="text-2xl font-bold mb-6">Mes collaborations</h3>
-              <div className="space-y-6">
-                <div className={`rounded-xl p-6 ${
-                  theme === 'dark' ? 'bg-white/10' : 'bg-white/20'
-                }`}>
-                  <h4 className="font-bold text-lg mb-2">AG Expert Consulting International</h4>
-                  <p className="opacity-90">Community Management & Stratégie digitale</p>
-                  <div className="flex gap-2 mt-4">
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Facebook Ads
-                    </span>
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Content Strategy
-                    </span>
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Branding
-                    </span>
-                  </div>
+              
+              {/* Zone de recommandation remplaçant le prix */}
+              <div className={`text-center p-4 rounded-xl mb-6 ${
+                theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-100/50'
+              }`}>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <MessageCircle className="w-5 h-5 text-blue-500" />
+                  <span className={`font-medium ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  }`}>
+                    Recommandation
+                  </span>
                 </div>
-                
-                <div className={`rounded-xl p-6 ${
-                  theme === 'dark' ? 'bg-white/10' : 'bg-white/20'
+                <p className={`text-sm ${
+                  theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                 }`}>
-                  <h4 className="font-bold text-lg mb-2">Entreprises diverses</h4>
-                  <p className="opacity-90">Consultant en visibilité digitale</p>
-                  <div className="flex gap-2 mt-4">
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Copywriting
-                    </span>
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Campagnes
-                    </span>
-                    <span className={`px-3 py-1 rounded-full text-sm ${
-                      theme === 'dark' ? 'bg-white/20' : 'bg-white/30'
-                    }`}>
-                      Design
-                    </span>
-                  </div>
-                </div>
+                  {solution.recommandation}
+                </p>
               </div>
-            </motion.div>
+            </div>
+            
+            <div className={`px-8 pb-8`}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleSolutionClick}
+                className={`w-full py-4 font-bold rounded-xl transition-all duration-300 ${
+                  index === 1
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50'
+                    : theme === 'dark'
+                      ? 'bg-gray-700 text-white hover:bg-gray-600'
+                      : 'bg-gray-900 text-white hover:bg-gray-800'
+                }`}
+              >
+                {solution.cta}
+              </motion.button>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+
+    {/* Section Processus améliorée */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className={`mt-20 rounded-2xl p-8 md:p-12 ${
+        theme === 'dark'
+          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
+          : 'bg-gradient-to-r from-blue-50 to-orange-50'
+      }`}
+    >
+      <div className="text-center mb-12">
+        <h3 className={`text-3xl font-bold mb-4 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>
+          Comment nous <span className="text-gradient-orange">travaillons</span> ?
+        </h3>
+        <p className={`text-xl max-w-2xl mx-auto ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          Un processus éprouvé pour garantir votre succès
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-4 gap-6">
+        {[
+          { number: "01", title: "Diagnostic Gratuit", desc: "Analyse approfondie de vos besoins", icon: <Target className="w-6 h-6" /> },
+          { number: "02", title: "Stratégie Sur-Mesure", desc: "Plan d'action personnalisé", icon: <PenTool className="w-6 h-6" /> },
+          { number: "03", title: "Exécution Précise", desc: "Création et optimisation", icon: <Sparkles className="w-6 h-6" /> },
+          { number: "04", title: "Suivi & Résultats", desc: "Analyse et ajustements", icon: <BarChart3 className="w-6 h-6" /> }
+        ].map((step, index) => (
+          <div key={index} className="relative">
+            <div className={`text-center p-6 rounded-2xl ${
+              theme === 'dark' ? 'bg-gray-800/50' : 'bg-white'
+            }`}>
+              <div className={`text-5xl font-bold mb-4 ${
+                theme === 'dark' ? 'text-gray-600' : 'text-gray-300'
+              }`}>
+                {step.number}
+              </div>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
+                theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
+              }`}>
+                <div className="text-orange-500">{step.icon}</div>
+              </div>
+              <h4 className={`font-bold text-lg mb-2 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                {step.title}
+              </h4>
+              <p className={`text-sm ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                {step.desc}
+              </p>
+            </div>
+            {index < 3 && (
+              <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
+                <ChevronRight className={`w-8 h-8 ${
+                  theme === 'dark' ? 'text-gray-600' : 'text-gray-300'
+                }`} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  </div>
+</section>
+{/* Section À propos - PHOTO VISIBLE DIRECTEMENT */}
+<section id="about" className={`py-20 md:py-28 px-4 overflow-hidden ${
+  theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
+}`}>
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+        theme === 'dark' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-orange-100 border border-orange-200'
+      }`}>
+        <Sparkles className="w-4 h-4 text-orange-500" />
+        <span className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+        }`}>
+          L'homme derrière Média Créa Plus
+        </span>
+      </div>
+      
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Je transforme vos défis en <span className="text-gradient-orange">opportunités digitales</span>
+      </h2>
+      
+      <p className={`text-xl max-w-3xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Fondateur de Média Créa Plus • Expert en stratégie digitale • Accompagnement professionnel
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Photo VISIBLE PAR DÉFAUT */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="relative"
+      >
+        {/* Conteneur de la photo - CLICKABLE POUR OUVRIR EN GRAND */}
+        <div 
+          className="relative overflow-hidden rounded-3xl shadow-2xl cursor-pointer"
+          onClick={() => window.open('/images/profil1.jpeg', '_blank')}
+        >
+          {/* Image de profil - VISIBLE DIRECTEMENT */}
+          <div className="relative h-[500px] w-full">
+            <Image
+              src="/images/profil1.jpeg"
+              alt="Ninsemouh César GbéO - Fondateur de Média Créa Plus"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+            
+            {/* Overlay subtil pour améliorer la lisibilité */}
+            <div className={`absolute inset-0 bg-gradient-to-t ${
+              theme === 'dark' 
+                ? 'from-black/20 via-transparent to-transparent' 
+                : 'from-white/10 via-transparent to-transparent'
+            }`} />
+          </div>
+          
+          {/* Badge professionnel en bas */}
+          <div className={`absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t ${
+            theme === 'dark' 
+              ? 'from-black/80 to-transparent' 
+              : 'from-white/80 to-transparent'
+          } backdrop-blur-sm`}>
+            <div className="text-center">
+              <h3 className={`text-2xl font-bold mb-1 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                Ninsemouh César GbéO
+              </h3>
+              <p className={`text-sm font-medium ${
+                theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+              }`}>
+                Fondateur & Stratège Digital
+              </p>
+            </div>
+          </div>
+          
+          {/* Option pour agrandir - DISCRET */}
+          <div className="absolute top-4 right-4 z-10">
+            <div className={`p-2 rounded-full backdrop-blur-md ${
+              theme === 'dark' ? 'bg-black/40' : 'bg-white/40'
+            }`}>
+              <Maximize className={`w-5 h-5 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`} />
+            </div>
+          </div>
+          
+          {/* Texte indicateur overlay (apparaît au hover) */}
+          <div className={`absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 ${
+            theme === 'dark' ? 'bg-black/40' : 'bg-white/40'
+          } backdrop-blur-sm`}>
+            <p className={`text-center px-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              Cliquez pour voir en grand
+            </p>
           </div>
         </div>
-      </section>
-
+        
+        {/* Badges d'information sous la photo */}
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
+          {[
+            { text: "Stratège Digital", icon: <Target className="w-4 h-4" />, color: "orange" },
+            { text: "Accompagnateur", icon: <Users className="w-4 h-4" />, color: "blue" },
+            { text: "Fondateur", icon: <Award className="w-4 h-4" />, color: "emerald" }
+          ].map((badge, index) => (
+            <div
+              key={index}
+              className={`px-3 py-1.5 rounded-full flex items-center gap-2 ${
+                theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-100'
+              }`}
+            >
+              <div className={`text-${badge.color}-500`}>
+                {badge.icon}
+              </div>
+              <span className={`text-sm font-medium ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
+                {badge.text}
+              </span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+      
+      {/* Texte de présentation MODÉRÉ */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="space-y-6"
+      >
+        <div>
+          <h3 className={`text-2xl md:text-3xl font-bold mb-2 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Mon parcours, votre <span className="text-gradient-orange">accompagnement</span>
+          </h3>
+          <p className={`text-lg mb-4 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            De la stratégie d'entreprise à la création digitale
+          </p>
+        </div>
+        
+        <div className="space-y-4">
+          <p className={`leading-relaxed ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Fort d'une expérience dans l'accompagnement d'entreprises, j'ai constaté que de nombreux entrepreneurs faisaient face aux mêmes défis digitaux. Ces obstacles freinaient leur croissance, non par manque de compétences, mais par besoin d'un accompagnement adapté.
+          </p>
+          
+          <p className={`leading-relaxed ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            C'est pour répondre à ce besoin que j'ai créé <span className="font-semibold text-gradient-orange">Média Créa Plus</span>. Une approche qui combine expertise digitale et accompagnement personnalisé, dans une dynamique de communauté et d'entraide.
+          </p>
+          
+          <p className={`leading-relaxed ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+          }`}>
+            Mon objectif est simple : vous fournir les outils et stratégies dont vous avez réellement besoin pour développer votre présence en ligne, sans jargon inutile ni promesses vides.
+          </p>
+        </div>
+        
+        {/* Mes valeurs - SANS EMOJIS */}
+        <div className="pt-6">
+          <h4 className={`text-xl font-bold mb-4 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Ce qui guide mon approche
+          </h4>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              {
+                title: "Approche Humaine",
+                description: "Je prends le temps de comprendre vos besoins réels pour un accompagnement adapté.",
+                icon: <Users className="w-5 h-5" />
+              },
+              {
+                title: "Solutions Concrètes",
+                description: "Je propose des stratégies applicables avec des résultats mesurables.",
+                icon: <Target className="w-5 h-5" />
+              },
+              {
+                title: "Transparence",
+                description: "Pas de surprises. Vous savez exactement ce que vous obtenez.",
+                icon: <Eye className="w-5 h-5" />
+              },
+              {
+                title: "Engagement",
+                description: "Je m'implique dans votre projet comme si c'était le mien.",
+                icon: <Handshake className="w-5 h-5" />
+              }
+            ].map((item, index) => (
+              <div
+                key={index}
+                className={`flex items-start gap-3 p-4 rounded-xl ${
+                  theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-50'
+                }`}
+              >
+                <div className={`flex-shrink-0 p-2 rounded-lg ${
+                  theme === 'dark' ? 'bg-gray-700' : 'bg-white'
+                }`}>
+                  <div className="text-orange-500">
+                    {item.icon}
+                  </div>
+                </div>
+                <div>
+                  <h5 className={`font-semibold mb-1 ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {item.title}
+                  </h5>
+                  <p className={`text-sm ${
+                    theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                  }`}>
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* CTA personnel */}
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={() => {
+            const phoneNumber = "+22501809886";
+            const message = encodeURIComponent(
+              "Bonjour Ninsemouh ! Je viens de découvrir votre site et je suis intéressé par votre accompagnement. Pourrions-nous en discuter ?"
+            );
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+          }}
+          className={`w-full md:w-auto px-8 py-3 font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-3 mt-8 ${
+            theme === 'dark'
+              ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50'
+              : 'bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50'
+          }`}
+        >
+          <MessageCircle className="w-5 h-5" />
+          Échanger sur votre projet
+        </motion.button>
+      </motion.div>
+    </div>
+    
+    {/* Séparateur visuel */}
+    <div className="mt-16 mb-12">
+      <div className="flex items-center justify-center gap-6">
+        <div className={`h-px flex-1 ${
+          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-300'
+        }`}></div>
+        <div className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-gray-500' : 'text-gray-400'
+        }`}>
+          Expériences & Collaborations
+        </div>
+        <div className={`h-px flex-1 ${
+          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-300'
+        }`}></div>
+      </div>
+    </div>
+    
+    {/* Collaborations MODÉRÉES */}
+    <div className={`p-8 rounded-2xl ${
+      theme === 'dark'
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900'
+        : 'bg-gradient-to-br from-blue-50 to-orange-50'
+    }`}>
+      <h3 className={`text-2xl font-bold mb-8 text-center ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Mes domaines d'accompagnement
+      </h3>
+      
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            company: "Entreprises & Startups",
+            role: "Stratégie Digitale",
+            description: "Accompagnement dans le développement de stratégies digitales adaptées à vos objectifs.",
+            tags: ["Stratégie", "Positionnement", "Croissance"]
+          },
+          {
+            company: "Entrepreneurs Individuels",
+            role: "Développement en Ligne",
+            description: "Aide à la création et au développement de votre présence digitale.",
+            tags: ["Visibilité", "Création", "Développement"]
+          },
+          {
+            company: "Communauté Média Créa Plus",
+            role: "Animation & Partage",
+            description: "Création d'une communauté d'entraide pour échanger et progresser ensemble.",
+            tags: ["Communauté", "Partage", "Évolution"]
+          }
+        ].map((collab, index) => (
+          <div
+            key={index}
+            className={`p-6 rounded-xl ${
+              theme === 'dark' ? 'bg-gray-800/50' : 'bg-white'
+            }`}
+          >
+            <h4 className={`text-lg font-bold mb-2 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              {collab.company}
+            </h4>
+            <p className={`text-sm font-medium mb-3 ${
+              theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+            }`}>
+              {collab.role}
+            </p>
+            <p className={`text-sm mb-4 ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+            }`}>
+              {collab.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {collab.tags.map((tag, tagIndex) => (
+                <span
+                  key={tagIndex}
+                  className={`px-3 py-1 rounded-full text-xs ${
+                    theme === 'dark'
+                      ? 'bg-gray-700 text-gray-300'
+                      : 'bg-gray-100 text-gray-700'
+                  }`}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
       {/* Section Témoignages */}
       <section id="temoignages" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
         theme === 'dark' ? 'bg-gray-900' : 'bg-white'
