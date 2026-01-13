@@ -133,51 +133,6 @@ export default function Home() {
         }`}> mesurables</span> et durables.
       </motion.p>
 
-      {/* Stats rapides pour crédibilité */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="flex flex-wrap justify-center gap-6 md:gap-12 mb-12"
-      >
-        <div className="text-center">
-          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
-            theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-          }`}>
-            +150%
-          </div>
-          <div className={`text-sm font-medium ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            Augmentation Leads
-          </div>
-        </div>
-        <div className="text-center">
-          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
-            theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-          }`}>
-            3+ ans
-          </div>
-          <div className={`text-sm font-medium ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            d'Expertise
-          </div>
-        </div>
-        <div className="text-center">
-          <div className={`text-3xl md:text-4xl font-bold mb-2 ${
-            theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
-          }`}>
-            98%
-          </div>
-          <div className={`text-sm font-medium ${
-            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            Satisfaction
-          </div>
-        </div>
-      </motion.div>
-
       {/* Boutons d'action - PROFESSIONNELS */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -303,7 +258,7 @@ export default function Home() {
 </section>
 
 {/* Section Problèmes */}
-<section id="problemes" className="py-16 md:py-24 px-4">
+<section id="services" className="py-16 md:py-24 px-4">
   <div className="container mx-auto max-w-6xl">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
