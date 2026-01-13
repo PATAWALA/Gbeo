@@ -998,7 +998,7 @@ export default function Home() {
         </div>
       </section>
       {/* Section FAQ - Inspirante et Colorée */}
-{/* Section FAQ - Pour Tous */}
+{/* Section FAQ - Réponses Directes */}
 <section id="faq" className={`py-20 px-4 ${
   theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
 }`}>
@@ -1016,72 +1016,64 @@ export default function Home() {
         <span className={`text-sm font-medium ${
           theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
         }`}>
-          Réponses à vos questions
+          Questions fréquentes
         </span>
       </div>
       
       <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
         theme === 'dark' ? 'text-white' : 'text-gray-900'
       }`}>
-        Les questions qui <span className="text-gradient-orange">reviennent le plus</span>
+        Questions que l'on <span className="text-gradient-orange">me pose souvent</span>
       </h2>
       
       <p className={`text-xl max-w-2xl mx-auto ${
         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
       }`}>
-        Ce que les entrepreneurs, particuliers et professionnels me demandent avant de débuter leur transformation digitale
+        Voici les réponses directes aux questions les plus courantes
       </p>
     </motion.div>
 
     <div className="space-y-6">
       {[
         {
-          question: "Je ne suis pas entrepreneur mais particulier. Vos services sont-ils adaptés pour moi ?",
-          answer: "Absolument ! J'accompagne autant les particuliers que les professionnels. Que vous souhaitiez créer une présence en ligne pour une passion, développer une activité personnelle, ou simplement mieux maîtriser votre communication digitale, j'adapte mon accompagnement à vos besoins spécifiques.",
-          color: "orange",
-          category: "Particulier"
+          question: "Vous travaillez avec des particuliers aussi ?",
+          answer: "Oui, absolument ! Jeunes entrepreneurs, indépendants, créateurs de contenu - tous sont les bienvenus.",
+          color: "orange"
         },
         {
-          question: "Combien de temps faut-il pour voir les premiers résultats concrets ?",
-          answer: "Les premiers signes d'amélioration apparaissent souvent dans les 30 premiers jours. Pour des résultats significatifs (augmentation du trafic, engagement accru, génération de contacts), nous visons généralement 60 à 90 jours. Chaque projet étant unique, je vous propose un calendrier personnalisé dès notre premier échange.",
-          color: "emerald",
-          category: "Tous"
+          question: "Délai pour voir des résultats ?",
+          answer: "Premières améliorations en 30 jours, résultats significatifs en 60-90 jours.",
+          color: "emerald"
         },
         {
-          question: "Comment s'adapte votre tarification à mon budget ?",
-          answer: "Je propose plusieurs formats d'accompagnement pour convenir à différents budgets. Que vous soyez particulier avec un projet personnel ou entrepreneur avec une enveloppe dédiée, je vous présenterai des options adaptées. L'important est l'adéquation entre votre investissement et les résultats attendus.",
-          color: "blue",
-          category: "Tous"
+          question: "Tarifs adaptés aux petits budgets ?",
+          answer: "Oui, plusieurs formats pour tous les budgets. On trouve toujours une solution.",
+          color: "blue"
         },
         {
-          question: "Je débute complètement en digital. Est-ce un problème ?",
-          answer: "Au contraire ! J'adore accompagner les débutants. Je prends le temps d'expliquer chaque étape en termes simples, sans jargon technique. Nous avançons à votre rythme pour que vous compreniez et maitrisiez chaque aspect de votre présence digitale.",
-          color: "purple",
-          category: "Débutant"
+          question: "Je débute complètement, c'est possible ?",
+          answer: "Parfaitement ! Je simplifie tout. Pas besoin d'être expert.",
+          color: "purple"
         },
         {
-          question: "Puis-je travailler avec vous si j'ai déjà une agence ou un community manager ?",
-          answer: "Bien sûr ! Je peux intervenir en complément pour apporter une vision stratégique, auditer votre situation actuelle, ou former votre équipe. Mon rôle est de vous faire gagner en efficacité, quel que soit votre niveau d'accompagnement actuel.",
-          color: "rose",
-          category: "Professionnel"
+          question: "Déjà une équipe digitale ?",
+          answer: "Oui, je peux compléter, auditer ou former votre équipe existante.",
+          color: "rose"
         },
         {
-          question: "Proposez-vous des formations ou seulement de l'accompagnement ?",
-          answer: "Les deux ! Selon vos besoins, je peux vous former à maîtriser les outils vous-même (formations personnalisées) OU prendre en charge la gestion complète de votre digital. Nous déterminons ensemble l'approche qui correspond le mieux à vos objectifs et à votre temps disponible.",
-          color: "amber",
-          category: "Tous"
+          question: "Formations ou accompagnement ?",
+          answer: "Les deux ! Selon vos besoins : je forme ou j'exécute.",
+          color: "amber"
         },
         {
-          question: "Quelle est votre disponibilité pour les suivis et ajustements ?",
-          answer: "Je suis très disponible pour mes clients. Nous avons des points réguliers (hebdomadaires ou bi-mensuels selon la formule) et vous pouvez me contacter entre les sessions pour des questions urgentes. Votre réussite est ma priorité, donc je m'assure d'être réactif à vos besoins.",
-          color: "cyan",
-          category: "Tous"
+          question: "Votre disponibilité ?",
+          answer: "Très disponible. Points réguliers + accès direct entre les sessions.",
+          color: "cyan"
         },
         {
-          question: "En quoi votre approche diffère-t-elle des autres professionnels du digital ?",
-          answer: "Je combine expertise technique et approche humaine. Mon objectif n'est pas juste de faire du contenu, mais de créer une présence digitale qui vous ressemble et qui atteint vos objectifs personnels ou professionnels. Je m'implique personnellement dans chaque projet comme s'il était le mien.",
-          color: "indigo",
-          category: "Tous"
+          question: "Votre différence ?",
+          answer: "Approche humaine + expertise technique. Je m'implique personnellement.",
+          color: "indigo"
         }
       ].map((faq, index) => (
         <motion.div
@@ -1097,102 +1089,29 @@ export default function Home() {
           }`}
         >
           <details className="cursor-pointer">
-            <summary className={`list-none px-8 py-6 flex justify-between items-start ${
+            <summary className={`list-none px-6 py-4 flex justify-between items-center ${
               theme === 'dark' ? 'hover:bg-gray-800/50' : 'hover:bg-gray-50/50'
             } transition-colors duration-300`}>
-              <div className="flex items-start gap-4 flex-1">
-                <div className="text-left flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <span className={`font-bold text-lg ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {faq.question}
-                    </span>
-                    <span className={`text-xs px-3 py-1 rounded-full font-medium ${
-                      theme === 'dark' 
-                        ? 'bg-gray-700 text-gray-300' 
-                        : 'bg-gray-200 text-gray-700'
-                    }`}>
-                      {faq.category}
-                    </span>
-                  </div>
-                  <div className={`h-1 w-16 rounded-full bg-${faq.color}-500 opacity-80`}></div>
+              <div className="flex items-center gap-4">
+                <div>
+                  <span className={`font-bold text-lg ${
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {faq.question}
+                  </span>
                 </div>
               </div>
-              <ChevronRight className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 group-open:rotate-90 mt-2 ${
+              <ChevronRight className={`w-5 h-5 flex-shrink-0 transition-transform duration-300 group-open:rotate-90 ${
                 theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
               }`} />
             </summary>
-            <div className="px-8 pb-6">
+            <div className="px-6 pb-4">
               <div className={`ml-12 pl-4 border-l-2 border-${faq.color}-500/30`}>
-                <p className={`text-lg leading-relaxed ${
+                <p className={`text-lg font-medium leading-relaxed ${
                   theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   {faq.answer}
                 </p>
-                
-                {/* Contenu supplémentaire selon la question */}
-                {faq.category === "Particulier" && (
-                  <div className={`mt-4 p-4 rounded-lg ${
-                    theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-100'
-                  }`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-blue-500" />
-                      <span className={`font-medium ${
-                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                      }`}>
-                        Exemples de projets pour particuliers :
-                      </span>
-                    </div>
-                    <ul className={`space-y-2 text-sm ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                        <span>Développer une passion ou un hobby en ligne</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                        <span>Créer une activité complémentaire</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                        <span>Améliorer sa présence professionnelle personnelle</span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-                
-                {faq.category === "Débutant" && (
-                  <div className={`mt-4 p-4 rounded-lg ${
-                    theme === 'dark' ? 'bg-gray-800/50' : 'bg-gray-100'
-                  }`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Sparkles className="w-5 h-5 text-purple-500" />
-                      <span className={`font-medium ${
-                        theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                      }`}>
-                        Ce que vous apprendrez :
-                      </span>
-                    </div>
-                    <ul className={`space-y-2 text-sm ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                        <span>Les bases du marketing digital adaptées à votre niveau</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                        <span>Comment créer du contenu efficace sans être expert</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                        <span>Les outils simples pour gérer votre présence en ligne</span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
               </div>
             </div>
           </details>
@@ -1200,130 +1119,45 @@ export default function Home() {
       ))}
     </div>
 
-    {/* CTA pour Tous */}
+    {/* CTA Direct */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`mt-16 p-8 md:p-12 rounded-2xl text-center relative overflow-hidden ${
+      className={`mt-16 p-8 md:p-10 rounded-2xl text-center ${
         theme === 'dark'
-          ? 'bg-gradient-to-br from-gray-800 to-gray-900'
-          : 'bg-gradient-to-br from-blue-50 to-orange-50'
+          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
+          : 'bg-gradient-to-r from-blue-50 to-orange-50'
       }`}
     >
-      {/* Éléments décoratifs */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full -translate-y-16 translate-x-16 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/10 rounded-full translate-y-16 -translate-x-16 blur-3xl"></div>
+      <h3 className={`text-2xl font-bold mb-4 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Votre question n'est pas là ?
+      </h3>
       
-      <div className="relative z-10">
-        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
-          theme === 'dark' ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/30' : 'bg-gradient-to-r from-orange-100 to-amber-100 border border-orange-200'
-        }`}>
-          <Sparkles className="w-4 h-4 text-orange-500" />
-          <span className={`text-sm font-medium ${
-            theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
-          }`}>
-            Votre situation est unique
-          </span>
-        </div>
-        
-        <h3 className={`text-2xl md:text-3xl font-bold mb-6 ${
-          theme === 'dark' ? 'text-white' : 'text-gray-900'
-        }`}>
-          Que vous soyez particulier, entrepreneur ou entreprise
-        </h3>
-        
-        <p className={`text-lg mb-8 max-w-2xl mx-auto ${
-          theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-        }`}>
-          Votre projet mérite une attention personnalisée. Prenons 15 minutes pour discuter de vos objectifs spécifiques et voir comment je peux vous accompagner vers le succès digital.
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            className={`p-6 rounded-xl text-center ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-gray-800/80 to-gray-900/80'
-                : 'bg-gradient-to-br from-white to-gray-50'
-            }`}
-          >
-            <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
-              theme === 'dark' ? 'bg-green-500/20' : 'bg-green-100'
-            }`}>
-              <MessageCircle className="w-6 h-6 text-green-500" />
-            </div>
-            <h4 className={`font-bold text-lg mb-2 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              Pour les projets rapides
-            </h4>
-            <p className={`text-sm mb-4 ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Questions simples ou projets courts
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const phoneNumber = "+22501809886";
-                const message = encodeURIComponent(
-                  `Bonjour Ninsemouh ! 👋\n\nJ'ai une question rapide concernant [votre projet].\n\nPouvons-nous en discuter brièvement ?`
-                );
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-                window.open(whatsappUrl, '_blank');
-              }}
-              className="w-full py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-lg shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-shadow duration-300"
-            >
-              Échanger sur WhatsApp
-            </motion.button>
-          </motion.div>
-          
-          <motion.div
-            whileHover={{ scale: 1.03 }}
-            className={`p-6 rounded-xl text-center ${
-              theme === 'dark'
-                ? 'bg-gradient-to-br from-gray-800/80 to-gray-900/80'
-                : 'bg-gradient-to-br from-white to-gray-50'
-            }`}
-          >
-            <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full mb-4 ${
-              theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-100'
-            }`}>
-              <Phone className="w-6 h-6 text-blue-500" />
-            </div>
-            <h4 className={`font-bold text-lg mb-2 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              Pour les projets structurés
-            </h4>
-            <p className={`text-sm mb-4 ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Accompagnement complet ou formation
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className={`w-full py-3 font-bold rounded-lg border-2 transition-colors duration-300 ${
-                theme === 'dark'
-                  ? 'border-blue-500 text-white hover:bg-blue-500/10'
-                  : 'border-blue-500 text-blue-600 hover:bg-blue-50'
-              }`}
-            >
-              Voir les options détaillées
-            </motion.button>
-          </motion.div>
-        </div>
-        
-        <p className={`text-sm mt-8 ${
-          theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-        }`}>
-          ⚡ Réponse garantie en moins de 2 heures • Pas d'engagement pour le premier échange
-        </p>
-      </div>
+      <p className={`mb-6 ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Posez-la directement, je réponds en moins de 15 minutes
+      </p>
+      
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          const phoneNumber = "+22501809886";
+          const message = encodeURIComponent(
+            "Bonjour Ninsemouh ! J'ai une question :"
+          );
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+          window.open(whatsappUrl, '_blank');
+        }}
+        className="inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg shadow-green-500/30"
+      >
+        <MessageCircle className="w-5 h-5" />
+        Poser ma question sur WhatsApp
+      </motion.button>
     </motion.div>
   </div>
 </section>
