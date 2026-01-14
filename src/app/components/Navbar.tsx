@@ -59,7 +59,7 @@ export default function Navbar() {
   const handleWhatsAppClick = () => {
     const phoneNumber = "+22501809886";
     const message = encodeURIComponent(
-      "Bonjour Média Créa Plus ! 👋\n\nJe souhaite prendre contact avec vous pour discuter d'un projet.\n\nPouvez-vous me rappeler ou me répondre sur WhatsApp ?"
+      "Bonjour Média Plus Créa ! 👋\n\nJe souhaite prendre contact avec vous pour discuter d'un projet.\n\nPouvez-vous me rappeler ou me répondre sur WhatsApp ?"
     );
     
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -112,7 +112,7 @@ export default function Navbar() {
                   <span className={`font-bold text-sm md:text-base lg:text-lg leading-tight whitespace-nowrap ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Média Créa Plus
+                    Média Plus Créa
                   </span>
                   <span className="text-[10px] md:text-xs text-orange-500 font-medium hidden xs:inline">
                     Créations Digitales
@@ -231,7 +231,7 @@ export default function Navbar() {
                     <h3 className={`font-bold text-lg ${
                       theme === 'dark' ? 'text-white' : 'text-gray-900'
                     }`}>
-                      Média Créa Plus
+                      Média Plus Créa
                     </h3>
                     <p className={`text-sm ${
                       theme === 'dark' ? 'text-gray-400' : 'text-gray-600'

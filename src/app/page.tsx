@@ -7,7 +7,9 @@ import Image from "next/image";
 import { DynamicIcon } from 'lucide-react/dynamic';
 import { 
   BarChart3, 
-  Award,
+  Award, Instagram,
+  Facebook, 
+  Linkedin,
   Handshake,
   PenTool, 
   Zap,
@@ -216,7 +218,7 @@ export default function Home() {
         </motion.button>
       </motion.div>
 
-      {/* Témoignage rapide pour confiance */}
+      {/* Témoignage rapide pour confiance - REMPLACÉ PAR VOTRE TÉMOIGNAGE */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -239,19 +241,24 @@ export default function Home() {
             <p className={`font-medium ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              "Une transformation totale de notre communication"
+              "Une expertise qui propulse votre visibilité à l'international"
             </p>
             <p className={`text-sm ${
               theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              Alexandre K., Directeur Marketing
+              Abdoulaye Patawala • Expert en Développement Web & Applications Modernes
+            </p>
+            <p className={`text-xs mt-1 ${
+              theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+            }`}>
+              Spécialiste Digital - Bénin
             </p>
           </div>
         </div>
         <p className={`text-sm italic ${
           theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
         }`}>
-          "Média Créa Plus a multiplié notre visibilité par 3 en seulement 2 mois."
+          "Média Plus Créa a su donner un coup de fouet à ma visibilité digitale. Notre partenariat, marqué par une écoute et une réactivité constantes, a été une expérience très positive. Je les recommande vivement"
         </p>
       </motion.div>
 
@@ -402,7 +409,7 @@ export default function Home() {
       <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${
         theme === 'dark' ? 'text-white' : 'text-gray-900'
       }`}>
-        <span className="text-gradient-orange">Média Créa Plus</span> peut sûrement répondre à votre problème
+        <span className="text-gradient-orange">Média Plus Créa</span> peut sûrement répondre à votre problème
       </h3>
       <p className={`text-lg mb-6 max-w-2xl mx-auto ${
         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
@@ -432,7 +439,7 @@ export default function Home() {
       <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
         theme === 'dark' ? 'text-white' : 'text-gray-900'
       }`}>
-        <span className="text-gradient-orange">Média Créa Plus</span> vous propose ces solutions sur mesure
+        <span className="text-gradient-orange">Média Plus Créa</span> vous propose ces solutions sur mesure
       </h2>
       <p className={`text-xl max-w-3xl mx-auto ${
         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
@@ -453,7 +460,7 @@ export default function Home() {
           ],
           cta: "Obtenir ce pack Premium",
           icon: <Eye className="w-8 h-8" />,
-          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nJe suis intéressé(e) par votre Pack Visibilité Premium.\n\nPourriez-vous me contacter pour en discuter ?",
+          whatsappMessage: "Bonjour Média Plus Créa ! 👋\n\nJe suis intéressé(e) par votre Pack Visibilité Premium.\n\nPourriez-vous me contacter pour en discuter ?",
           recommandation: "Idéal pour les entreprises qui souhaitent une présence digitale complète et cohérente"
         },
         {
@@ -466,7 +473,7 @@ export default function Home() {
           ],
           cta: "Transformer mon activité",
           icon: <TrendingUp className="w-8 h-8" />,
-          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nJe souhaite une Transformation Digitale Excellence pour mon activité.\n\nPouvons-nous en parler ?",
+          whatsappMessage: "Bonjour Média Plus Créa! 👋\n\nJe souhaite une Transformation Digitale Excellence pour mon activité.\n\nPouvons-nous en parler ?",
           recommandation: "Parfait pour les entreprises en phase de croissance ou de repositionnement"
         },
         {
@@ -479,7 +486,7 @@ export default function Home() {
           ],
           cta: "Boost mon contenu",
           icon: <Video className="w-8 h-8" />,
-          whatsappMessage: "Bonjour Média Créa Plus ! 👋\n\nLe Content Factory Elite m'intéresse pour développer ma présence digitale.\n\nPouvez-vous me donner plus d'informations ?",
+          whatsappMessage: "Bonjour Média Plus Créa ! 👋\n\nLe Content Factory Elite m'intéresse pour développer ma présence digitale.\n\nPouvez-vous me donner plus d'informations ?",
           recommandation: "Recommandé pour maintenir une présence régulière et engageante"
         }
       ].map((solution, index) => {
@@ -593,7 +600,7 @@ export default function Home() {
         <span className={`text-sm font-medium ${
           theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
         }`}>
-          L'homme derrière Média Créa Plus
+          Ninsemouh Cesar Gbeo,l'homme derrière Média Plus Créa
         </span>
       </div>
       
@@ -606,7 +613,7 @@ export default function Home() {
       <p className={`text-xl max-w-3xl mx-auto ${
         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
       }`}>
-        Fondateur de Média Créa Plus • Expert en stratégie digitale • Accompagnement professionnel
+        Fondateur de Média Plus Créa• Expert en stratégie digitale • Accompagnement professionnel
       </p>
     </motion.div>
 
@@ -627,7 +634,7 @@ export default function Home() {
           <div className="relative h-[500px] w-full">
             <Image
               src="/images/profil1.jpeg"
-              alt="Ninsemouh César GbéO - Fondateur de Média Créa Plus"
+              alt="Ninsemouh Cesar Gbeo - Fondateur de Média Plus Créa"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -652,7 +659,7 @@ export default function Home() {
               <h3 className={`text-2xl font-bold mb-1 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Ninsemouh César GbéO
+                Ninsemouh Cesar Gbeo
               </h3>
               <p className={`text-sm font-medium ${
                 theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
@@ -745,7 +752,7 @@ export default function Home() {
           <p className={`leading-relaxed ${
             theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
           }`}>
-            C'est pour répondre à ce besoin que j'ai créé <span className="font-semibold text-gradient-orange">Média Créa Plus</span>. Une approche qui combine expertise digitale et accompagnement personnalisé, dans une dynamique de communauté et d'entraide.
+            C'est pour répondre à ce besoin que j'ai créé <span className="font-semibold text-gradient-orange">Média Plus Créa</span>. Une approche qui combine expertise digitale et accompagnement personnalisé, dans une dynamique de communauté et d'entraide.
           </p>
           
           <p className={`leading-relaxed ${
@@ -866,7 +873,7 @@ export default function Home() {
       <div className="relative w-full max-w-4xl h-[80vh] max-h-[90vh]">
         <Image
           src="/images/profil1.jpeg"
-          alt="Ninsemouh César GbéO - Fondateur de Média Créa Plus (vue agrandie)"
+          alt="Ninsemouh Cesar Gbeo - Fondateur de Média Plus Créa (vue agrandie)"
           fill
           className="object-contain rounded-lg"
           sizes="100vw"
@@ -883,12 +890,12 @@ export default function Home() {
             <h3 className={`text-2xl font-bold mb-1 ${
               theme === 'dark' ? 'text-white' : 'text-white'
             }`}>
-              Ninsemouh César GbéO
+              Ninsemouh Cesar Gbeo
             </h3>
             <p className={`text-sm font-medium ${
               theme === 'dark' ? 'text-orange-300' : 'text-orange-300'
             }`}>
-              Fondateur & Stratège Digital - Média Créa Plus
+              Fondateur & Stratège Digital - Média Plus Créa
             </p>
             <p className={`text-xs mt-2 ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-300'
@@ -1364,59 +1371,55 @@ export default function Home() {
             Suivez-moi sur les réseaux
           </h4>
           <div className="flex gap-3">
-            <a 
-              title="instagram"
-              href="https://www.instagram.com/votre-compte" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`p-3 rounded-xl transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
-                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
-              }`}
-            >
-              <DynamicIcon 
-                name="instagram" 
-                size={20} 
-                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
-              />
-            </a>
-            <a 
-              title="facebook"
-              href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`p-3 rounded-xl transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
-                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
-              }`}
-            >
-              <DynamicIcon 
-                name="facebook" 
-                size={20} 
-                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
-              />
-            </a>
-            {/* Ajout LinkedIn pour plus de professionnalisme */}
-            <a 
-              title="linkedin"
-              href="https://www.linkedin.com/in/votre-profil" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className={`p-3 rounded-xl transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
-                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
-              }`}
-            >
-              <DynamicIcon 
-                name="linkedin" 
-                size={20} 
-                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
-              />
-            </a>
-          </div>
+  <a 
+    title="instagram"
+    href="https://www.instagram.com/votre-compte" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-3 rounded-xl transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+    }`}
+  >
+    <Instagram 
+      size={20} 
+      className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+    />
+  </a>
+  <a 
+    title="facebook"
+    href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-3 rounded-xl transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+    }`}
+  >
+    <Facebook 
+      size={20} 
+      className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+    />
+  </a>
+  <a 
+    title="linkedin"
+    href="https://www.linkedin.com/in/votre-profil" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-3 rounded-xl transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+    }`}
+  >
+    <Linkedin 
+      size={20} 
+      className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+    />
+  </a>
+</div>
         </div>
         
         {/* Garantie */}
@@ -1602,7 +1605,7 @@ export default function Home() {
           <h3 className={`text-2xl font-bold ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            Média Créa Plus
+            Média Plus Créa
           </h3>
         </div>
         <p className={`mb-6 ${
@@ -1704,7 +1707,7 @@ export default function Home() {
         <p className={`text-sm ${
           theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
         }`}>
-          &copy; {new Date().getFullYear()} Média Créa Plus. Tous droits réservés.
+          &copy; {new Date().getFullYear()} Média Plus Créa. Tous droits réservés.
         </p>
         <p className={`text-xs mt-1 ${
           theme === 'dark' ? 'text-gray-600' : 'text-gray-400'
@@ -1714,67 +1717,64 @@ export default function Home() {
       </div>
       
       {/* Réseaux sociaux dans le footer */}
-      <div className="flex gap-4 mt-4 md:mt-0">
-        <a 
-          href="https://www.instagram.com/votre-compte" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={`p-2 rounded-lg transition-all duration-300 ${
-            theme === 'dark' 
-              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
-              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
-          }`}
-          aria-label="Instagram"
-        >
-          <DynamicIcon 
-            name="instagram" 
-            size={18} 
-            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
-          />
-        </a>
-        <a 
-          href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={`p-2 rounded-lg transition-all duration-300 ${
-            theme === 'dark' 
-              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
-              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
-          }`}
-          aria-label="Facebook"
-        >
-          <DynamicIcon 
-            name="facebook" 
-            size={18} 
-            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
-          />
-        </a>
-        <a 
-          href="https://wa.me/+22501809886" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={`p-2 rounded-lg transition-all duration-300 ${
-            theme === 'dark' 
-              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
-              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
-          }`}
-          aria-label="WhatsApp"
-        >
-          <DynamicIcon 
-            name="message-circle" 
-            size={18} 
-            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
-          />
-        </a>
-      </div>
+      {/* Réseaux sociaux dans le footer */}
+<div className="flex gap-4 mt-4 md:mt-0">
+  <a 
+    href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-2 rounded-lg transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+    }`}
+    aria-label="Facebook"
+  >
+    <Facebook 
+      size={18} 
+      className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+    />
+  </a>
+  <a 
+    href="https://wa.me/+22501809886" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-2 rounded-lg transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+    }`}
+    aria-label="WhatsApp"
+  >
+    <MessageCircle 
+      size={18} 
+      className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+    />
+  </a>
+  <a 
+    href="https://www.instagram.com/votre-compte" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className={`p-2 rounded-lg transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+        : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+    }`}
+    aria-label="Instagram"
+  >
+    <Instagram 
+      size={18} 
+      className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+    />
+  </a>
+</div>
     </div>
-    
     {/* Mentions légales */}
     <div className="mt-8 text-center">
       <p className={`text-xs ${
         theme === 'dark' ? 'text-gray-600' : 'text-gray-400'
       }`}>
-        Site réalisé par Ninsemouh César GbéO • Média Créa Plus
+        Site réalisé par Ninsemouh Cesar Gbeo • Média Plus Créa
       </p>
     </div>
   </div>
