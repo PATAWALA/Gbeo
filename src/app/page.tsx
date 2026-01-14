@@ -64,7 +64,7 @@ export default function Home() {
   e.preventDefault();
   
   // Construire le message pour WhatsApp
-  const phoneNumber = "+22501809886";
+  const phoneNumber = "+2250544752377";
   const message = encodeURIComponent(
     `Nouvelle demande de contact depuis le site Média Créa Plus !\n\n` +
     `Nom: ${formData.name}\n` +
@@ -481,7 +481,7 @@ export default function Home() {
         }
       ].map((solution, index) => {
         const handleSolutionClick = () => {
-          const phoneNumber = "+22501809886";
+          const phoneNumber = "+2250544752377";
           const message = encodeURIComponent(solution.whatsappMessage);
           const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
           window.open(whatsappUrl, '_blank');
@@ -818,7 +818,7 @@ export default function Home() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => {
-            const phoneNumber = "+22501809886";
+            const phoneNumber = "+2250544752377";
             const message = encodeURIComponent(
               "Bonjour Ninsemouh ! Je viens de découvrir votre site et je suis intéressé par votre accompagnement. Pourrions-nous en discuter ?"
             );
@@ -1092,7 +1092,7 @@ export default function Home() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
-          const phoneNumber = "+22501809886";
+          const phoneNumber = "+2250544752377";
           const message = encodeURIComponent(
             "Bonjour Ninsemouh ! J'ai une question :"
           );
@@ -1246,7 +1246,7 @@ export default function Home() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => {
-          const phoneNumber = "+22501809886";
+          const phoneNumber = "+2250544752377";
           const message = encodeURIComponent(
             "Bonjour Ninsemouh ! Je viens de voir vos garanties et je souhaite en discuter avec vous."
           );
@@ -1726,7 +1726,7 @@ export default function Home() {
     />
   </a>
   <a 
-    href="https://wa.me/+22501809886" 
+    href="https://wa.me/2250544752377" 
     target="_blank" 
     rel="noopener noreferrer"
     className={`p-2 rounded-lg transition-all duration-300 ${
