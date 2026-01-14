@@ -1322,7 +1322,7 @@ export default function Home() {
               <p className={`${
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                ninsemouh@gmail.com
+                médiapluscréa.com
               </p>
             </div>
           </div>
