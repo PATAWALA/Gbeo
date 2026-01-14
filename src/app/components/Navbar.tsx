@@ -57,7 +57,7 @@ export default function Navbar() {
   };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "+22501809886";
+    const phoneNumber = "2250544752377";
     const message = encodeURIComponent(
       "Bonjour Média Plus Créa ! 👋\n\nJe souhaite prendre contact avec vous pour discuter d'un projet.\n\nPouvez-vous me rappeler ou me répondre sur WhatsApp ?"
     );
@@ -68,7 +68,7 @@ export default function Navbar() {
 
   const navItems = [
     { id: 'hero', label: 'Accueil' },
-    { id: 'services', label: 'Services' },
+    { id: 'services', label: 'Services'},
     { id: 'about', label: 'À propos' },
     { id: 'temoignages', label: 'Témoignages' },
     { id: 'contact', label: 'Contact' },

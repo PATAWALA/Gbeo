@@ -1557,7 +1557,7 @@ export default function Home() {
               <button
                 type="button"
                 onClick={() => {
-                  const phoneNumber = "+22501809886";
+                  const phoneNumber = "+2250544752377";
                   const message = encodeURIComponent(
                     "Bonjour Ninsemouh ! Je souhaite discuter de mon projet avec vous."
                   );
@@ -1609,7 +1609,7 @@ export default function Home() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
-            const phoneNumber = "+22501809886";
+            const phoneNumber = "+2250544752377";
             const message = encodeURIComponent(
               "Bonjour Ninsemouh ! 👋\n\nJe viens de voir votre site et je souhaite discuter de mon projet avec vous."
             );
@@ -1726,7 +1726,7 @@ export default function Home() {
     />
   </a>
   <a 
-    href="https://wa.me/2250544752377" 
+    href="https://wa.me/+2250544752377" 
     target="_blank" 
     rel="noopener noreferrer"
     className={`p-2 rounded-lg transition-all duration-300 ${
