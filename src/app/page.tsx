@@ -4,7 +4,6 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { DynamicIcon } from 'lucide-react/dynamic';
 import { 
   BarChart3, 
   Award, Instagram,
@@ -31,7 +30,6 @@ import {
   MessageCircle,
   Phone
 } from "lucide-react";
-import ServiceItem from "./components/ServiceItem";
 import Testimonial from "./components/Testimonial";
 import Navbar from "./components/Navbar";
 import { useTheme } from "./context/ThemeContext";
