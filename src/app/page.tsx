@@ -217,7 +217,7 @@ export default function Home() {
         </motion.button>
       </motion.div>
 
-      {/* Témoignage rapide pour confiance - REMPLACÉ PAR VOTRE TÉMOIGNAGE */}
+      {/* Témoignage rapide pour confiance - CENTRÉ ET SANS ICÔNE */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -228,33 +228,24 @@ export default function Home() {
             : 'bg-white/50 border-gray-200/50'
         }`}
       >
-        <div className="flex items-center gap-4 mb-4">
-          <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-            theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
+        <div className="text-center mb-4">
+          <p className={`font-medium ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>
-            <MessageCircle className={`w-6 h-6 ${
-              theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
-            }`} />
-          </div>
-          <div className="text-left">
-            <p className={`font-medium ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              "Une expertise qui propulse votre visibilité à l'international"
-            </p>
-            <p className={`text-sm ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Abdoulaye Patawala • Expert en Développement Web & Applications Modernes
-            </p>
-            <p className={`text-xs mt-1 ${
-              theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
-            }`}>
-              Spécialiste Digital - Bénin
-            </p>
-          </div>
+            "Une expertise qui propulse votre visibilité à l'international"
+          </p>
+          <p className={`text-sm mt-1 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Abdoulaye Patawala • Expert en Développement Web & Applications Modernes
+          </p>
+          <p className={`text-xs mt-1 ${
+            theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+          }`}>
+            Spécialiste Digital - Bénin
+          </p>
         </div>
-        <p className={`text-sm italic ${
+        <p className={`text-sm italic text-center ${
           theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
         }`}>
           "Média Plus Créa a su donner un coup de fouet à ma visibilité digitale. Notre partenariat, marqué par une écoute et une réactivité constantes, a été une expérience très positive. Je les recommande vivement"
@@ -1672,7 +1663,7 @@ export default function Home() {
               theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
             }`} />
             <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              ninsemouh@gmail.com
+              médiapluscréa.com
             </span>
           </div>
           <div className="flex items-center gap-3">
