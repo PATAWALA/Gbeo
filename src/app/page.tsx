@@ -4,15 +4,18 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
+import { DynamicIcon } from 'lucide-react/dynamic';
 import { 
-  Send, 
   BarChart3, 
   Award,
-  Facebook,
   Handshake,
   PenTool, 
+  Zap,
+  Search,
+  MapPin,
+  Clock,
+  Headphones,
   Video, 
-  Instagram,
   X,  
   Users ,
   ChevronRight,
@@ -40,7 +43,7 @@ export default function Home() {
   });
   const { theme } = useTheme();
 
-  const controls = useAnimation();
+ const controls = useAnimation();
  const [isImageModalOpen, setIsImageModalOpen] = useState(false); 
 
   useEffect(() => {
@@ -56,11 +59,36 @@ export default function Home() {
     });
   }, [controls]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Traitement du formulaire
-    console.log(formData);
-  };
+  const handleSubmit = (e:any) => {
+  e.preventDefault();
+  
+  // Construire le message pour WhatsApp
+  const phoneNumber = "+22501809886";
+  const message = encodeURIComponent(
+    `Nouvelle demande de contact depuis le site Média Créa Plus !\n\n` +
+    `Nom: ${formData.name}\n` +
+    `Email: ${formData.email}\n` +
+    `Service intéressé: ${formData.service}\n` +
+    `Message: ${formData.message}\n\n` +
+    `Je souhaite discuter de ce projet.`
+  );
+  
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  
+  // Ouvrir WhatsApp
+  window.open(whatsappUrl, '_blank');
+  
+  // Réinitialiser le formulaire
+  setFormData({
+    name: "",
+    email: "",
+    service: "",
+    message: ""
+  });
+  
+  // Optionnel : Afficher un message de confirmation
+  alert("Merci ! Vous allez être redirigé vers WhatsApp pour finaliser votre demande.");
+};
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
@@ -256,7 +284,6 @@ export default function Home() {
     </motion.div>
   </div>
 </section>
-
 {/* Section Problèmes */}
 <section id="services" className="py-16 md:py-24 px-4">
   <div className="container mx-auto max-w-6xl">
@@ -365,16 +392,12 @@ export default function Home() {
       ))}
     </div>
 
-    {/* Transition vers la solution - MODIFIÉE */}
+    {/* Transition vers la solution - SANS FOND DISTINCTIF */}
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`mt-16 p-8 rounded-2xl text-center ${
-        theme === 'dark'
-          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
-          : 'bg-gradient-to-r from-blue-50 to-orange-50'
-      }`}
+      className="mt-16 text-center"
     >
       <h3 className={`text-2xl md:text-3xl font-bold mb-4 ${
         theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -397,7 +420,6 @@ export default function Home() {
     </motion.div>
   </div>
 </section>
-
 {/* Section Solutions */}
 <section id="solutions" className="py-16 md:py-24 px-4">
   <div className="container mx-auto max-w-6xl">
@@ -551,74 +573,6 @@ export default function Home() {
         );
       })}
     </div>
-
-    {/* Section Processus améliorée */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className={`mt-20 rounded-2xl p-8 md:p-12 ${
-        theme === 'dark'
-          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
-          : 'bg-gradient-to-r from-blue-50 to-orange-50'
-      }`}
-    >
-      <div className="text-center mb-12">
-        <h3 className={`text-3xl font-bold mb-4 ${
-          theme === 'dark' ? 'text-white' : 'text-gray-900'
-        }`}>
-          Comment nous <span className="text-gradient-orange">travaillons</span> ?
-        </h3>
-        <p className={`text-xl max-w-2xl mx-auto ${
-          theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-        }`}>
-          Un processus éprouvé pour garantir votre succès
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-4 gap-6">
-        {[
-          { number: "01", title: "Diagnostic Gratuit", desc: "Analyse approfondie de vos besoins", icon: <Target className="w-6 h-6" /> },
-          { number: "02", title: "Stratégie Sur-Mesure", desc: "Plan d'action personnalisé", icon: <PenTool className="w-6 h-6" /> },
-          { number: "03", title: "Exécution Précise", desc: "Création et optimisation", icon: <Sparkles className="w-6 h-6" /> },
-          { number: "04", title: "Suivi & Résultats", desc: "Analyse et ajustements", icon: <BarChart3 className="w-6 h-6" /> }
-        ].map((step, index) => (
-          <div key={index} className="relative">
-            <div className={`text-center p-6 rounded-2xl ${
-              theme === 'dark' ? 'bg-gray-800/50' : 'bg-white'
-            }`}>
-              <div className={`text-5xl font-bold mb-4 ${
-                theme === 'dark' ? 'text-gray-600' : 'text-gray-300'
-              }`}>
-                {step.number}
-              </div>
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 ${
-                theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
-              }`}>
-                <div className="text-orange-500">{step.icon}</div>
-              </div>
-              <h4 className={`font-bold text-lg mb-2 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
-                {step.title}
-              </h4>
-              <p className={`text-sm ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-                {step.desc}
-              </p>
-            </div>
-            {index < 3 && (
-              <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
-                <ChevronRight className={`w-8 h-8 ${
-                  theme === 'dark' ? 'text-gray-600' : 'text-gray-300'
-                }`} />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </motion.div>
   </div>
 </section>
 {/* Section À propos - PHOTO VISIBLE DIRECTEMENT */}
@@ -997,7 +951,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Section FAQ - Inspirante et Colorée */}
 {/* Section FAQ - Réponses Directes */}
 <section id="faq" className={`py-20 px-4 ${
   theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
@@ -1119,16 +1072,12 @@ export default function Home() {
       ))}
     </div>
 
-    {/* CTA Direct */}
+    {/* CTA Direct - SANS FOND DISTINCTIF */}
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`mt-16 p-8 md:p-10 rounded-2xl text-center ${
-        theme === 'dark'
-          ? 'bg-gradient-to-r from-gray-800 to-gray-900'
-          : 'bg-gradient-to-r from-blue-50 to-orange-50'
-      }`}
+      className="mt-16 text-center"
     >
       <h3 className={`text-2xl font-bold mb-4 ${
         theme === 'dark' ? 'text-white' : 'text-gray-900'
@@ -1139,7 +1088,7 @@ export default function Home() {
       <p className={`mb-6 ${
         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
       }`}>
-        Posez-la directement, je réponds en moins de 15 minutes
+        Posez-la directement, je réponds sous 30 minutes
       </p>
       
       <motion.button
@@ -1161,222 +1110,675 @@ export default function Home() {
     </motion.div>
   </div>
 </section>
-      {/* Section Contact - MODIFIÉE POUR NE PAS ÊTRE NOIRE PAR DÉFAUT */}
-      <section id="contact" className={`py-16 px-4 transition-colors duration-300 overflow-hidden${
-        theme === 'dark' 
-          ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
-          : 'bg-gradient-to-br from-gray-50 to-blue-50'
+{/* Section Garanties - Après la FAQ */}
+<section id="garanties" className={`py-20 px-4 ${
+  theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
+}`}>
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+        theme === 'dark' ? 'bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30' : 'bg-gradient-to-r from-green-100 to-emerald-100 border border-green-200'
       }`}>
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className={theme === 'dark' ? 'text-white' : 'text-gray-900'}
-            >
-              <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
+        <CheckCircle className="w-4 h-4 text-green-500" />
+        <span className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-green-300' : 'text-green-600'
+        }`}>
+          Nos engagements
+        </span>
+      </div>
+      
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Ce que je vous <span className="text-gradient-green">garantis</span>
+      </h2>
+      
+      <p className={`text-xl max-w-3xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Des promesses concrètes pour votre tranquillité d'esprit
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Réponse ultra-rapide",
+          description: "Je réponds à vos messages en moins de 2 heures en journée.",
+          icon: <Zap className="w-8 h-8" />,
+          color: "yellow"
+        },
+        {
+          title: "Premier diagnostic gratuit",
+          description: "Analyse complète de votre situation sans engagement.",
+          icon: <Search className="w-8 h-8" />,
+          color: "blue"
+        },
+        {
+          title: "Transparence totale",
+          description: "Pas de coûts cachés, pas de surprises.",
+          icon: <Eye className="w-8 h-8" />,
+          color: "orange"
+        },
+        {
+          title: "Adaptation à votre rythme",
+          description: "On avance à votre vitesse, selon vos disponibilités.",
+          icon: <Clock className="w-8 h-8" />,
+          color: "purple"
+        },
+        {
+          title: "Support continu",
+          description: "Disponible même après la fin de l'accompagnement.",
+          icon: <Headphones className="w-8 h-8" />,
+          color: "green"
+        },
+        {
+          title: "Résultats mesurables",
+          description: "Des indicateurs clairs pour suivre vos progrès.",
+          icon: <BarChart3 className="w-8 h-8" />,
+          color: "red"
+        }
+      ].map((garantie, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1 }}
+          className={`p-8 rounded-2xl border-2 transition-all duration-300 hover:scale-[1.02] ${
+            theme === 'dark'
+              ? 'bg-gradient-to-br from-gray-800 to-gray-900 border-gray-700 hover:border-green-500'
+              : 'bg-gradient-to-br from-white to-gray-50 border-gray-200 hover:border-green-400'
+          }`}
+        >
+          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 ${
+            theme === 'dark' ? `bg-${garantie.color}-500/20` : `bg-${garantie.color}-100`
+          }`}>
+            <div className={`text-${garantie.color}-500`}>{garantie.icon}</div>
+          </div>
+          
+          <h3 className={`text-xl font-bold mb-3 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            {garantie.title}
+          </h3>
+          
+          <p className={`leading-relaxed ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            {garantie.description}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* CTA - SANS FOND DISTINCTIF */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mt-16 text-center"
+    >
+      <h3 className={`text-2xl font-bold mb-4 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Encore des doutes ?
+      </h3>
+      
+      <p className={`text-lg mb-6 max-w-2xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Discutons-en directement. Pas de pression, juste des conseils honnêtes.
+      </p>
+      
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <CheckCircle className="w-5 h-5 text-green-500" />
+        <span className={`text-sm ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+        }`}>
+          Premier échange gratuit et sans engagement
+        </span>
+      </div>
+      
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => {
+          const phoneNumber = "+22501809886";
+          const message = encodeURIComponent(
+            "Bonjour Ninsemouh ! Je viens de voir vos garanties et je souhaite en discuter avec vous."
+          );
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+          window.open(whatsappUrl, '_blank');
+        }}
+        className="inline-flex items-center gap-3 px-8 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold rounded-full shadow-lg shadow-green-500/30"
+      >
+        <MessageCircle className="w-5 h-5" />
+        Poser mes dernières questions
+      </motion.button>
+    </motion.div>
+  </div>
+</section>
+{/* Section Contact - MODIFIÉE */}
+<section id="contact" className={`py-20 px-4 transition-colors duration-300 ${
+  theme === 'dark' 
+    ? 'bg-gradient-to-br from-gray-800 to-gray-900' 
+    : 'bg-gradient-to-br from-gray-50 to-blue-50'
+}`}>
+  <div className="container mx-auto max-w-6xl">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+        theme === 'dark' ? 'bg-blue-500/20 border border-blue-500/30' : 'bg-blue-100 border border-blue-200'
+      }`}>
+        <MessageCircle className="w-4 h-4 text-blue-500" />
+        <span className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-blue-300' : 'text-blue-600'
+        }`}>
+          Contactez-moi
+        </span>
+      </div>
+      
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        Prêt à <span className="text-gradient-blue">transformer</span> votre communication ?
+      </h2>
+      
+      <p className={`text-xl max-w-3xl mx-auto ${
+        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+      }`}>
+        Discutons de votre projet et créons ensemble une stratégie sur mesure
+      </p>
+    </motion.div>
+
+    <div className="grid md:grid-cols-2 gap-12">
+      {/* Colonne gauche - Coordonnées */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="space-y-8"
+      >
+        <div className="space-y-6">
+          <div className="flex items-start gap-4">
+            <div className={`p-3 rounded-xl ${
+              theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-100'
+            }`}>
+              <Mail className="w-6 h-6 text-blue-500" />
+            </div>
+            <div>
+              <h4 className={`font-bold text-lg mb-1 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Prêt à <span className="text-blue-500">transformer</span> votre communication ?
-              </h2>
-              <p className={`mb-8 text-lg ${
+                Email
+              </h4>
+              <p className={`${
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                Discutons de votre projet et créons ensemble une stratégie sur mesure.
+                ninsemouh@gmail.com
               </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-lg ${
-                    theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-100'
-                  }`}>
-                    <Mail className="text-blue-500" />
-                  </div>
-                  <div>
-                    <h4 className={`font-semibold ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      Email
-                    </h4>
-                    <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                      contact@gbeo-copywriting.com
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-4">
-                  <div className={`p-3 rounded-lg ${
-                    theme === 'dark' ? 'bg-blue-500/20' : 'bg-blue-100'
-                  }`}>
-                    <Phone className="text-blue-500" />
-                  </div>
-                  <div>
-                    <h4 className={`font-semibold ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      Téléphone
-                    </h4>
-                    <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                      +XX X XX XX XX XX
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex gap-4 mt-8">
-                  <a href="#" className={`p-3 rounded-lg transition-colors ${
-                    theme === 'dark' 
-                      ? 'bg-white/10 hover:bg-white/20' 
-                      : 'bg-gray-200 hover:bg-gray-300'
-                  }`}>
-                    <Instagram size={20} className={theme === 'dark' ? 'text-white' : 'text-gray-700'} />
-                  </a>
-                  <a href="#" className={`p-3 rounded-lg transition-colors ${
-                    theme === 'dark' 
-                      ? 'bg-white/10 hover:bg-white/20' 
-                      : 'bg-gray-200 hover:bg-gray-300'
-                  }`}>
-                    <Facebook size={20} className={theme === 'dark' ? 'text-white' : 'text-gray-700'} />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className={`rounded-2xl p-8 shadow-xl transition-colors duration-300 ${
-                theme === 'dark' 
-                  ? 'bg-gray-800 text-white' 
-                  : 'bg-white text-gray-900'
-              }`}>
-                <h3 className={`text-2xl font-bold mb-6 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Parlez-moi de votre projet
-                </h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
-                      Nom complet
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                        theme === 'dark'
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-                          : 'border border-gray-300 text-gray-900'
-                      }`}
-                      placeholder="Votre nom"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                        theme === 'dark'
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-                          : 'border border-gray-300 text-gray-900'
-                      }`}
-                      placeholder="votre@email.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
-                      Service intéressé
-                    </label>
-                    <select
-                      title="services"
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                        theme === 'dark'
-                          ? 'bg-gray-700 border-gray-600 text-white'
-                          : 'border border-gray-300 text-gray-900'
-                      }`}
-                      value={formData.service}
-                      onChange={(e) => setFormData({...formData, service: e.target.value})}
-                    >
-                      <option value="">Sélectionnez un service</option>
-                      <option value="copywriting">Copywriting & Stratégie</option>
-                      <option value="design">Conception graphique</option>
-                      <option value="campagnes">Gestion de campagnes</option>
-                      <option value="community">Community Management</option>
-                      <option value="full">Pack complet</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                    }`}>
-                      Votre message
-                    </label>
-                    <textarea
-                      rows={4}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                        theme === 'dark'
-                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-                          : 'border border-gray-300 text-gray-900'
-                      }`}
-                      placeholder="Décrivez votre projet..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    />
-                  </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
-                  >
-                    Envoyer ma demande
-                  </motion.button>
-                </form>
-              </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={`py-8 px-4 transition-colors duration-300 ${
-        theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'
-      }`}>
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          
+          <div className="flex items-start gap-4">
+            <div className={`p-3 rounded-xl ${
+              theme === 'dark' ? 'bg-green-500/20' : 'bg-green-100'
+            }`}>
+              <Phone className="w-6 h-6 text-green-500" />
+            </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">GbéO Copywriting</h3>
-              <p className="text-gray-400">Transformez vos mots en résultats</p>
-            </div>
-            
-            <div className="mt-4 md:mt-0">
-              <p className="text-gray-400">
-                &copy; {new Date().getFullYear()} Ninsemouh GbéO. Tous droits réservés.
+              <h4 className={`font-bold text-lg mb-1 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                Téléphone / WhatsApp
+              </h4>
+              <p className={`${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                +225 01 80 98 86
+              </p>
+              <p className={`text-sm mt-1 ${
+                theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+              }`}>
+                Réponse rapide garantie
               </p>
             </div>
           </div>
         </div>
-      </footer>
+        
+        {/* Réseaux sociaux avec DynamicIcon */}
+        <div>
+          <h4 className={`font-bold text-lg mb-4 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Suivez-moi sur les réseaux
+          </h4>
+          <div className="flex gap-3">
+            <a 
+              title="instagram"
+              href="https://www.instagram.com/votre-compte" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`p-3 rounded-xl transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+              }`}
+            >
+              <DynamicIcon 
+                name="instagram" 
+                size={20} 
+                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+              />
+            </a>
+            <a 
+              title="facebook"
+              href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`p-3 rounded-xl transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+              }`}
+            >
+              <DynamicIcon 
+                name="facebook" 
+                size={20} 
+                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+              />
+            </a>
+            {/* Ajout LinkedIn pour plus de professionnalisme */}
+            <a 
+              title="linkedin"
+              href="https://www.linkedin.com/in/votre-profil" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`p-3 rounded-xl transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'bg-white/10 hover:bg-white/20 hover:scale-105' 
+                  : 'bg-gray-200 hover:bg-gray-300 hover:scale-105'
+              }`}
+            >
+              <DynamicIcon 
+                name="linkedin" 
+                size={20} 
+                className={theme === 'dark' ? 'text-white' : 'text-gray-700'} 
+              />
+            </a>
+          </div>
+        </div>
+        
+        {/* Garantie */}
+        <div className={`p-4 rounded-xl ${
+          theme === 'dark' ? 'bg-gray-800/50' : 'bg-blue-50'
+        }`}>
+          <div className="flex items-center gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500" />
+            <span className={`font-medium ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+            }`}>
+              Premier diagnostic gratuit
+            </span>
+          </div>
+          <p className={`text-sm mt-2 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Sans engagement, pour voir si nous sommes faits pour travailler ensemble
+          </p>
+        </div>
+      </motion.div>
+      
+      {/* Colonne droite - Formulaire */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <div className={`rounded-2xl p-8 shadow-xl ${
+          theme === 'dark' 
+            ? 'bg-gradient-to-br from-gray-800 to-gray-900 text-white' 
+            : 'bg-white text-gray-900'
+        }`}>
+          <h3 className={`text-2xl font-bold mb-2 ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Parlez-moi de votre projet
+          </h3>
+          <p className={`mb-6 ${
+            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            Remplissez ce formulaire et je vous réponds dans les plus brefs délais
+          </p>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className={`block text-sm font-medium mb-2 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
+                Nom complet *
+              </label>
+              <input
+                type="text"
+                required
+                className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
+                    : 'border border-gray-300 text-gray-900'
+                }`}
+                placeholder="Votre nom et prénom"
+                value={formData.name}
+                onChange={(e) => setFormData({...formData, name: e.target.value})}
+              />
+            </div>
+            
+            <div>
+              <label className={`block text-sm font-medium mb-2 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
+                Email *
+              </label>
+              <input
+                type="email"
+                required
+                className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
+                    : 'border border-gray-300 text-gray-900'
+                }`}
+                placeholder="votre@email.com"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+              />
+            </div>
+            
+            <div>
+              <label className={`block text-sm font-medium mb-2 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
+                Service intéressé *
+              </label>
+              <select
+                title="selection"
+                required
+                className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 text-white'
+                    : 'border border-gray-300 text-gray-900'
+                }`}
+                value={formData.service}
+                onChange={(e) => setFormData({...formData, service: e.target.value})}
+              >
+                <option value="">Sélectionnez un service</option>
+                <option value="copywriting">Copywriting & Stratégie</option>
+                <option value="design">Conception graphique</option>
+                <option value="campagnes">Gestion de campagnes</option>
+                <option value="community">Community Management</option>
+                <option value="full">Pack complet</option>
+              </select>
+            </div>
+            
+            <div>
+              <label className={`block text-sm font-medium mb-2 ${
+                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              }`}>
+                Votre message *
+              </label>
+              <textarea
+                rows={4}
+                required
+                className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
+                  theme === 'dark'
+                    ? 'bg-gray-800 border-gray-700 text-white placeholder-gray-400'
+                    : 'border border-gray-300 text-gray-900'
+                }`}
+                placeholder="Décrivez votre projet, vos objectifs, votre budget..."
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+              />
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-blue-500/30"
+            >
+              Envoyer ma demande
+            </motion.button>
+            
+            <p className={`text-center text-sm ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`}>
+              Vous préférez WhatsApp ?{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  const phoneNumber = "+22501809886";
+                  const message = encodeURIComponent(
+                    "Bonjour Ninsemouh ! Je souhaite discuter de mon projet avec vous."
+                  );
+                  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+                  window.open(whatsappUrl, '_blank');
+                }}
+                className="font-medium text-green-500 hover:text-green-600 transition-colors"
+              >
+                Cliquez ici pour discuter directement
+              </button>
+            </p>
+          </form>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</section>
+{/* Footer moderne */}
+<footer className={`py-12 px-4 transition-colors duration-300 ${
+  theme === 'dark' 
+    ? 'bg-gradient-to-t from-gray-900 to-gray-950' 
+    : 'bg-gradient-to-t from-gray-50 to-white'
+}`}>
+  <div className="container mx-auto max-w-6xl">
+    {/* Section principale du footer */}
+    <div className="grid md:grid-cols-3 gap-8 mb-8">
+      {/* Colonne 1 - Logo et description */}
+      <div>
+        <div className="flex items-center gap-3 mb-4">
+          <div className={`p-2 rounded-lg ${
+            theme === 'dark' ? 'bg-orange-500/20' : 'bg-orange-100'
+          }`}>
+            <Sparkles className="w-6 h-6 text-orange-500" />
+          </div>
+          <h3 className={`text-2xl font-bold ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            Média Créa Plus
+          </h3>
+        </div>
+        <p className={`mb-6 ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          Je transforme vos défis digitaux en opportunités de croissance.
+        </p>
+        
+        {/* CTA WhatsApp dans le footer */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            const phoneNumber = "+22501809886";
+            const message = encodeURIComponent(
+              "Bonjour Ninsemouh ! 👋\n\nJe viens de voir votre site et je souhaite discuter de mon projet avec vous."
+            );
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+          }}
+          className={`flex items-center justify-center gap-3 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
+            theme === 'dark'
+              ? 'bg-gradient-to-r from-green-600 to-emerald-700 text-white shadow-lg shadow-green-500/30 hover:shadow-green-500/50'
+              : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/30 hover:shadow-green-500/50'
+          }`}
+        >
+          <MessageCircle className="w-5 h-5" />
+          Discuter sur WhatsApp
+        </motion.button>
+      </div>
+      
+      {/* Colonne 2 - Liens rapides */}
+      <div>
+        <h4 className={`text-lg font-bold mb-4 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>
+          Navigation
+        </h4>
+        <ul className="space-y-3">
+          {['Accueil', 'Services', 'À propos', 'Témoignages', 'FAQ', 'Contact'].map((item) => (
+            <li key={item}>
+              <a
+                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                className={`hover:text-orange-500 transition-colors ${
+                  theme === 'dark' ? 'text-gray-400 hover:text-orange-400' : 'text-gray-600 hover:text-orange-500'
+                }`}
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      {/* Colonne 3 - Contact rapide */}
+      <div>
+        <h4 className={`text-lg font-bold mb-4 ${
+          theme === 'dark' ? 'text-white' : 'text-gray-900'
+        }`}>
+          Contact rapide
+        </h4>
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <Mail className={`w-5 h-5 ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`} />
+            <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+              ninsemouh@gmail.com
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Phone className={`w-5 h-5 ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`} />
+            <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+              +225 01 80 98 86
+            </span>
+          </div>
+          <div className="flex items-center gap-3">
+            <MapPin className={`w-5 h-5 ${
+              theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+            }`} />
+            <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
+              Abidjan, Côte d'Ivoire
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {/* Séparateur */}
+    <div className={`h-px w-full my-8 ${
+      theme === 'dark' ? 'bg-gray-800' : 'bg-gray-200'
+    }`} />
+    
+    {/* Bas du footer */}
+    <div className="flex flex-col md:flex-row justify-between items-center">
+      <div>
+        <p className={`text-sm ${
+          theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+        }`}>
+          &copy; {new Date().getFullYear()} Média Créa Plus. Tous droits réservés.
+        </p>
+        <p className={`text-xs mt-1 ${
+          theme === 'dark' ? 'text-gray-600' : 'text-gray-400'
+        }`}>
+          Conçu avec ❤️ pour vos succès digitaux
+        </p>
+      </div>
+      
+      {/* Réseaux sociaux dans le footer */}
+      <div className="flex gap-4 mt-4 md:mt-0">
+        <a 
+          href="https://www.instagram.com/votre-compte" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`p-2 rounded-lg transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+          }`}
+          aria-label="Instagram"
+        >
+          <DynamicIcon 
+            name="instagram" 
+            size={18} 
+            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+          />
+        </a>
+        <a 
+          href="https://web.facebook.com/photo/?fbid=3027973700747048&set=a.100559063488541" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`p-2 rounded-lg transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+          }`}
+          aria-label="Facebook"
+        >
+          <DynamicIcon 
+            name="facebook" 
+            size={18} 
+            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+          />
+        </a>
+        <a 
+          href="https://wa.me/+22501809886" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={`p-2 rounded-lg transition-all duration-300 ${
+            theme === 'dark' 
+              ? 'bg-gray-800 hover:bg-gray-700 hover:scale-110' 
+              : 'bg-gray-200 hover:bg-gray-300 hover:scale-110'
+          }`}
+          aria-label="WhatsApp"
+        >
+          <DynamicIcon 
+            name="message-circle" 
+            size={18} 
+            className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
+          />
+        </a>
+      </div>
+    </div>
+    
+    {/* Mentions légales */}
+    <div className="mt-8 text-center">
+      <p className={`text-xs ${
+        theme === 'dark' ? 'text-gray-600' : 'text-gray-400'
+      }`}>
+        Site réalisé par Ninsemouh César GbéO • Média Créa Plus
+      </p>
+    </div>
+  </div>
+</footer>
     </div>
   );
 }
