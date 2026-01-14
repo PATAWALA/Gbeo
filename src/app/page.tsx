@@ -1671,7 +1671,7 @@ export default function Home() {
               theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
             }`} />
             <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-              +225 01 80 98 86
+              +2250544752377
             </span>
           </div>
           <div className="flex items-center gap-3">
