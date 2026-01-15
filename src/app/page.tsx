@@ -98,7 +98,7 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-<section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
+<section id="Accueil" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
   {/* Background décoratif */}
   <div className="absolute inset-0 z-0">
     <div className={`absolute inset-0 ${

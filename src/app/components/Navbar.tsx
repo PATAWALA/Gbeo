@@ -15,14 +15,14 @@ import { useTheme } from "../context/ThemeContext";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("Accueil");
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      const sections = ['hero', 'services', 'about', 'temoignages', 'contact'];
+      const sections = ['Accueil', 'services', 'about', 'temoignages', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -67,7 +67,7 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { id: 'hero', label: 'Accueil' },
+    { id: 'Accueil', label: 'Accueil' },
     { id: 'services', label: 'Services'},
     { id: 'about', label: 'À propos' },
     { id: 'temoignages', label: 'Témoignages' },
@@ -99,7 +99,7 @@ export default function Navbar() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-2 md:gap-3 cursor-pointer group flex-shrink-0"
-                onClick={() => scrollToSection("hero")}
+                onClick={() => scrollToSection("Accueil")}
               >
                 <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-lg ${
                   theme === 'dark'
