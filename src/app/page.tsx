@@ -1395,7 +1395,7 @@ export default function Home() {
   </a>
   <a 
     title="linkedin"
-    href="https://www.linkedin.com/in/votre-profil" 
+    href="https://www.linkedin.com/in/ninsemouh-gbeo-/" 
     target="_blank" 
     rel="noopener noreferrer"
     className={`p-3 rounded-xl transition-all duration-300 ${
@@ -1742,7 +1742,7 @@ export default function Home() {
     />
   </a>
   <a 
-    href="https://www.instagram.com/votre-compte" 
+    href="https://www.linkedin.com/in/ninsemouh-gbeo-/" 
     target="_blank" 
     rel="noopener noreferrer"
     className={`p-2 rounded-lg transition-all duration-300 ${
@@ -1752,7 +1752,7 @@ export default function Home() {
     }`}
     aria-label="Instagram"
   >
-    <Instagram 
+    <Linkedin
       size={18} 
       className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} 
     />
