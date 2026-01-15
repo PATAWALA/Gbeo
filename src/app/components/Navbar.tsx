@@ -1,3 +1,4 @@
+// app/components/Navbar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -15,14 +16,15 @@ import { useTheme } from "../context/ThemeContext";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("Accueil");
+  const [activeSection, setActiveSection] = useState("accueil");
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      const sections = ['Accueil', 'services', 'about', 'temoignages', 'contact'];
+      // Correction ici : les IDs doivent correspondre exactement
+      const sections = ['accueil', 'services', 'a-propos', 'temoignages', 'faq', 'contact', 'garanties'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -66,10 +68,11 @@ export default function Navbar() {
     window.open(whatsappUrl, '_blank');
   };
 
+  // Correction ici : 'a-propos' au lieu de 'about'
   const navItems = [
-    { id: 'Accueil', label: 'Accueil' },
+    { id: 'accueil', label: 'Accueil' },
     { id: 'services', label: 'Services'},
-    { id: 'about', label: 'À propos' },
+    { id: 'a-propos', label: 'À propos' }, // Changé de 'about' à 'a-propos'
     { id: 'temoignages', label: 'Témoignages' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -99,7 +102,7 @@ export default function Navbar() {
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-2 md:gap-3 cursor-pointer group flex-shrink-0"
-                onClick={() => scrollToSection("Accueil")}
+                onClick={() => scrollToSection("accueil")}
               >
                 <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-lg ${
                   theme === 'dark'

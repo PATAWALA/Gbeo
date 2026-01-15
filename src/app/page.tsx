@@ -1,4 +1,3 @@
-
 // app/page.tsx
 "use client";
 import { useState, useEffect } from "react";
@@ -98,7 +97,7 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-<section id="Accueil" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
+<section id="accueil" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
   {/* Background décoratif */}
   <div className="absolute inset-0 z-0">
     <div className={`absolute inset-0 ${
@@ -573,7 +572,7 @@ export default function Home() {
   </div>
 </section>
 {/* Section À propos - PHOTO VISIBLE DIRECTEMENT */}
-<section id="about" className={`py-20 md:py-28 px-4 overflow-hidden ${
+<section id="a-propos" className={`py-20 md:py-28 px-4 overflow-hidden ${
   theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
 }`}>
   <div className="container mx-auto max-w-6xl">
@@ -949,7 +948,7 @@ export default function Home() {
         </div>
       </section>
 {/* Section FAQ - Réponses Directes */}
-<section id="faq" className={`py-20 px-4 ${
+<section id="temoignages" className={`py-20 px-4 ${
   theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
 }`}>
   <div className="container mx-auto max-w-4xl">
@@ -1108,7 +1107,7 @@ export default function Home() {
   </div>
 </section>
 {/* Section Garanties - Après la FAQ */}
-<section id="garanties" className={`py-20 px-4 ${
+<section id="temoignages" className={`py-20 px-4 ${
   theme === 'dark' ? 'bg-gradient-to-b from-gray-900 to-gray-950' : 'bg-gradient-to-b from-white to-gray-50'
 }`}>
   <div className="container mx-auto max-w-6xl">
@@ -1638,7 +1637,9 @@ export default function Home() {
           {['Accueil', 'Services', 'À propos', 'Témoignages', 'FAQ', 'Contact'].map((item) => (
             <li key={item}>
               <a
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={`#${item.toLowerCase()
+                  .replace('à propos', 'a-propos')  // Correction ici
+                  .replace(' ', '-')}`}
                 className={`hover:text-orange-500 transition-colors ${
                   theme === 'dark' ? 'text-gray-400 hover:text-orange-400' : 'text-gray-600 hover:text-orange-500'
                 }`}
