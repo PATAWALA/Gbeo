@@ -7,11 +7,10 @@ import {
   BarChart3, 
   Award, 
   Instagram,
-  Facebook,
+  Facebook, 
   Linkedin,
   Handshake,
   Zap,
-  Flame,
   Search,
   MapPin,
   Clock,
@@ -19,7 +18,6 @@ import {
   Video, 
   X,  
   Users,
-  Dumbbell,
   ChevronRight,
   CheckCircle,
   Mail,
@@ -99,23 +97,18 @@ export default function Home() {
         : 'bg-gradient-to-b from-gray-50 to-white'
     }`}>
       <Navbar />
-<section id="accueil" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen">
-  {/* Background image - Visible à 100% */}
+<section id="accueil" className="relative pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-48 lg:pb-32 overflow-hidden">
+  {/* Background décoratif */}
   <div className="absolute inset-0 z-0">
-    <Image
-      src="/images/fond1.jpg"  
-      alt="Background IronForce Pro - Athlète en musculation"
-      fill
-      className="object-cover"  
-      priority
-    />
-    <div className="absolute inset-0 bg-black/40" />
-    {/* SUPPRIMÉ: Overlay sombre */}
-    {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black/80" /> */}
+    <div className={`absolute inset-0 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-b from-gray-900 via-gray-900 to-gray-950' 
+        : 'bg-gradient-to-b from-white via-blue-50/30 to-gray-50'
+    }`} />
     
-    {/* Éléments décoratifs animés - Réduits pour ne pas cacher l'image */}
-    <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl animate-pulse" />
-    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+    {/* Éléments décoratifs */}
+    <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
   </div>
 
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -123,77 +116,166 @@ export default function Home() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="text-center max-w-4xl mx-auto"
+      className="text-center max-w-5xl mx-auto"
     >
-      {/* Badge d'introduction - Avec fond semi-transparent pour lisibilité */}
+      {/* Badge d'introduction */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/70 backdrop-blur-sm border border-orange-500/50 mb-8"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/20 mb-8"
       >
-        <Flame className="w-4 h-4 text-orange-400" />
-        <span className="text-sm font-medium text-orange-300">
-          Performance Maximale
+        <Sparkles className="w-4 h-4 text-orange-500" />
+        <span className={`text-sm font-medium ${
+          theme === 'dark' ? 'text-orange-300' : 'text-orange-600'
+        }`}>
+          Agence de Création Digitale d'Excellence
         </span>
       </motion.div>
 
-      {/* Titre principal - Avec ombre pour contraste */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight tracking-tight text-white drop-shadow-2xl">
-        <span className="block">SCULPTEZ VOTRE</span>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 drop-shadow-lg">
-          CORPS IDÉAL
-        </span>
+      {/* Titre principal - IMPACTANT */}
+      <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight ${
+        theme === 'dark' ? 'text-white' : 'text-gray-900'
+      }`}>
+        <span className="block">Transformez Votre</span>
+        <span className="text-gradient-orange">Visibilité Digitale</span>
+        <span className="block mt-2">en Réussite Concrète</span>
       </h1>
 
-      {/* Description - Avec fond semi-transparent */}
+      {/* Description PERCUTANTE */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed text-white bg-black/50 backdrop-blur-sm rounded-xl p-6"
+        className={`text-lg md:text-xl lg:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+        }`}
       >
-        Programme de musculation scientifique pour des résultats rapides et durables.
+        Nous propulsons votre activité vers de nouveaux sommets grâce à des stratégies digitales 
+        <span className={`font-semibold ${
+          theme === 'dark' ? 'text-emerald-400' : 'text-emerald-600'
+        }`}> sur-mesure </span>
+        qui génèrent des résultats 
+        <span className={`font-semibold ${
+          theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
+        }`}> mesurables</span> et durables.
       </motion.p>
 
-      {/* Boutons d'action */}
+      {/* Boutons d'action - PROFESSIONNELS */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
         className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
       >
-        {/* Bouton principal */}
+        {/* Bouton principal - Call to Action fort */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -2,
+            boxShadow: "0 20px 40px rgba(249, 115, 22, 0.3)"
+          }}
           whileTap={{ scale: 0.98 }}
           onClick={() => document.getElementById("contact")?.scrollIntoView({ 
             behavior: "smooth",
             block: "start"
           })}
-          className="group px-8 py-4 md:px-10 md:py-4 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold rounded-xl transition-all duration-300 shadow-2xl shadow-orange-500/40 hover:shadow-orange-500/60"
+          className="group relative px-8 py-4 md:px-10 md:py-5 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold rounded-xl transition-all duration-300 shadow-2xl shadow-orange-500/30 hover:shadow-orange-500/50 focus:outline-none focus:ring-4 focus:ring-orange-500/40"
+          aria-label="Discuter de votre projet avec Média Créa Plus - Prendre rendez-vous"
         >
-          <span className="flex items-center gap-2">
-            Démarrer maintenant
-            <Flame className="w-5 h-5" />
+          <span className="relative z-10 flex items-center gap-2">
+            Discutons de votre projet
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </motion.button>
 
-        {/* Bouton secondaire - Transparent avec bordure */}
+        {/* Bouton secondaire - Élégant et professionnel */}
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -2,
+            boxShadow: "0 20px 40px rgba(37, 99, 235, 0.15)"
+          }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => document.getElementById("programmes")?.scrollIntoView({ 
+          onClick={() => document.getElementById("services")?.scrollIntoView({ 
             behavior: "smooth",
             block: "start"
           })}
-          className="group px-8 py-4 md:px-10 md:py-4 font-bold rounded-xl transition-all duration-300 border-2 border-white/30 bg-black/30 backdrop-blur-sm text-white hover:border-orange-500 hover:bg-black/50"
+          className={`group relative px-8 py-4 md:px-10 md:py-5 font-bold rounded-xl transition-all duration-300 shadow-xl focus:outline-none focus:ring-4 ${
+            theme === 'dark'
+              ? 'bg-gray-800/80 border border-gray-700 text-gray-200 hover:bg-gray-700/80 hover:border-gray-600 focus:ring-blue-500/40'
+              : 'bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 hover:border-blue-300 focus:ring-blue-500/30'
+          }`}
+          aria-label="Découvrir nos services et offres"
         >
-          <span className="flex items-center gap-2">
-            Voir les programmes
-            <Dumbbell className="w-5 h-5" />
+          <span className="relative z-10 flex items-center gap-2">
+            Découvrir nos solutions
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </span>
         </motion.button>
+      </motion.div>
+
+      {/* Témoignage rapide pour confiance - CENTRÉ ET SANS ICÔNE */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1 }}
+        className={`max-w-2xl mx-auto p-6 rounded-2xl backdrop-blur-sm border ${
+          theme === 'dark'
+            ? 'bg-gray-800/30 border-gray-700/50'
+            : 'bg-white/50 border-gray-200/50'
+        }`}
+      >
+        <div className="text-center mb-4">
+          <p className={`font-medium ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
+            "Une expertise qui propulse votre visibilité à l'international"
+          </p>
+          <p className={`text-sm mt-1 ${
+            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Abdoulaye Patawala • Expert en Développement Web & Applications Modernes
+          </p>
+          <p className={`text-xs mt-1 ${
+            theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+          }`}>
+            Spécialiste Digital - Bénin
+          </p>
+        </div>
+        <p className={`text-sm italic text-center ${
+          theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+        }`}>
+          "Média Plus Créa a su donner un coup de fouet à ma visibilité digitale. Notre partenariat, marqué par une écoute et une réactivité constantes, a été une expérience très positive. Je les recommande vivement"
+        </p>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="mt-16 flex flex-col items-center"
+      >
+        <span className={`text-sm font-medium mb-3 ${
+          theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          Découvrez nos solutions
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className={`w-6 h-10 rounded-full border-2 flex items-start justify-center p-1 ${
+            theme === 'dark' 
+              ? 'border-gray-600' 
+              : 'border-gray-300'
+          }`}
+        >
+          <div className={`w-1 h-2 rounded-full ${
+            theme === 'dark' ? 'bg-gray-400' : 'bg-gray-400'
+          }`} />
+        </motion.div>
       </motion.div>
     </motion.div>
   </div>
