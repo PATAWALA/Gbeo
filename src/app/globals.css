@@ -98,3 +98,42 @@ button:focus-visible {
 body.menu-open {
   overflow: hidden;
 }
+
+@keyframes muscle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-muscle-pulse {
+  animation: muscle-pulse 2s ease-in-out infinite;
+}
+
+/* Gradient spécifique musculation */
+.text-gradient-muscle {
+  background: linear-gradient(135deg, #f97316 0%, #dc2626 50%, #9d174d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Effet de reflet pour les boutons */
+.btn-muscle-reflect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-muscle-reflect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+}

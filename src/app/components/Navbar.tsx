@@ -1,15 +1,21 @@
 // app/components/Navbar.tsx
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Sun, 
   Moon, 
   Menu, 
-  X, 
+  X,
+  ChevronDown,
   Sparkles,
-  MessageCircle
+  Flame,
+  Dumbbell,
+  Trophy,
+  Target,
+  Users,
+  UserPlus // Icône pour inscription
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -17,14 +23,15 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("accueil");
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { theme, toggleTheme } = useTheme();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      // Correction ici : les IDs doivent correspondre exactement
-      const sections = ['accueil', 'services', 'a-propos', 'temoignages', 'faq', 'contact', 'garanties'];
+      const sections = ['accueil', 'programmes', 'coaching', 'nutrition', 'resultats'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -39,12 +46,24 @@ export default function Navbar() {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
     setIsMenuOpen(false);
+    setOpenDropdown(null);
     const element = document.getElementById(id);
     if (element) {
       const offset = 80;
@@ -58,23 +77,52 @@ export default function Navbar() {
     }
   };
 
-  const handleWhatsAppClick = () => {
+  const toggleDropdown = (dropdown: string) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+  };
+
+  // Fonction d'inscription
+  const handleInscription = () => {
     const phoneNumber = "2250544752377";
     const message = encodeURIComponent(
-      "Bonjour Média Plus Créa ! 👋\n\nJe souhaite prendre contact avec vous pour discuter d'un projet.\n\nPouvez-vous me rappeler ou me répondre sur WhatsApp ?"
+      "🎯 INSCRIPTION IRONFORCE PRO\n\nJe souhaite m'inscrire au programme de musculation !\n\nMerci de me contacter pour les modalités."
     );
     
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
 
-  // Correction ici : 'a-propos' au lieu de 'about'
   const navItems = [
-    { id: 'accueil', label: 'Accueil' },
-    { id: 'services', label: 'Services'},
-    { id: 'a-propos', label: 'À propos' }, // Changé de 'about' à 'a-propos'
-    { id: 'temoignages', label: 'Témoignages' },
-    { id: 'contact', label: 'Contact' },
+    { 
+      id: 'accueil', 
+      label: 'Accueil',
+      icon: <Sparkles className="w-4 h-4" />
+    },
+    { 
+      id: 'programmes', 
+      label: 'Programmes',
+      icon: <Dumbbell className="w-4 h-4" />,
+      dropdown: [
+        { id: 'debutant', label: 'Débutant', desc: 'Pour commencer' },
+        { id: 'intermediaire', label: 'Intermédiaire', desc: 'Niveau avancé' },
+        { id: 'pro', label: 'Professionnel', desc: 'Performance max' }
+      ]
+    },
+    { 
+      id: 'coaching', 
+      label: 'Coaching',
+      icon: <Users className="w-4 h-4" />
+    },
+    { 
+      id: 'nutrition', 
+      label: 'Nutrition',
+      icon: <Target className="w-4 h-4" />
+    },
+    { 
+      id: 'resultats', 
+      label: 'Résultats',
+      icon: <Trophy className="w-4 h-4" />
+    },
   ];
 
   return (
@@ -84,7 +132,8 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-2 w-full z-50 px-4 overflow-hidden ${scrolled ? 'py-1' : 'py-1'}`}
+        className={`fixed top-2 w-full z-50 px-4 ${scrolled ? 'py-1' : 'py-1'}`}
+        ref={dropdownRef}
       >
         <div className="flex justify-center w-full">
           <div className={`w-full max-w-6xl rounded-2xl backdrop-blur-lg transition-all duration-300 overflow-hidden ${
@@ -98,7 +147,7 @@ export default function Navbar() {
           }`}>
             <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 py-3">
               
-              {/* Logo - MODIFIÉ pour montrer le nom sur mobile */}
+              {/* Logo */}
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-2 md:gap-3 cursor-pointer group flex-shrink-0"
@@ -106,67 +155,108 @@ export default function Navbar() {
               >
                 <div className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-lg ${
                   theme === 'dark'
-                    ? 'bg-gradient-to-br from-orange-500 to-amber-500'
-                    : 'bg-gradient-to-br from-orange-400 to-amber-400'
+                    ? 'bg-gradient-to-br from-orange-500 to-red-600'
+                    : 'bg-gradient-to-br from-orange-400 to-red-500'
                 }`}>
-                  <Sparkles className="text-white w-4 h-4 md:w-5 md:h-5" />
+                  <Flame className="text-white w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div className="flex flex-col">
                   <span className={`font-bold text-sm md:text-base lg:text-lg leading-tight whitespace-nowrap ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Média Plus Créa
+                    IronForce Pro
                   </span>
                   <span className="text-[10px] md:text-xs text-orange-500 font-medium hidden xs:inline">
-                    Créations Digitales
+                    Transformation Physique
                   </span>
                 </div>
               </motion.div>
 
-              {/* Navigation Desktop - CENTRÉE */}
+              {/* Navigation Desktop */}
               <div className="hidden lg:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
                 <div className="flex items-center gap-1">
                   {navItems.map((item) => (
-                    <motion.button
-                      key={item.id}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => scrollToSection(item.id)}
-                      className={`relative px-4 py-2.5 rounded-lg mx-1 transition-all duration-300 ${
-                        activeSection === item.id
-                          ? theme === 'dark'
-                            ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/10 text-orange-400 font-semibold'
-                            : 'bg-gradient-to-r from-orange-500/10 to-amber-500/5 text-orange-600 font-semibold'
-                          : theme === 'dark'
-                            ? 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
-                      }`}
-                    >
-                      <span className="font-medium whitespace-nowrap">{item.label}</span>
-                      {activeSection === item.id && (
-                        <motion.div
-                          layoutId="activeTab"
-                          className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-1 rounded-t-full ${
-                            theme === 'dark' ? 'bg-orange-500' : 'bg-orange-500'
-                          }`}
-                        />
-                      )}
-                    </motion.button>
+                    <div key={item.id} className="relative">
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => 
+                          item.dropdown ? toggleDropdown(item.id) : scrollToSection(item.id)
+                        }
+                        className={`relative px-4 py-2.5 rounded-lg mx-1 transition-all duration-300 flex items-center gap-2 ${
+                          activeSection === item.id
+                            ? theme === 'dark'
+                              ? 'bg-gradient-to-r from-orange-500/20 to-red-600/10 text-orange-400 font-semibold'
+                              : 'bg-gradient-to-r from-orange-500/10 to-red-500/5 text-orange-600 font-semibold'
+                            : theme === 'dark'
+                              ? 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
+                        }`}
+                      >
+                        <span className="font-medium whitespace-nowrap">{item.label}</span>
+                        {item.dropdown && (
+                          <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                            openDropdown === item.id ? 'rotate-180' : ''
+                          } ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`} />
+                        )}
+                      </motion.button>
+
+                      {/* Dropdown */}
+                      <AnimatePresence>
+                        {item.dropdown && openDropdown === item.id && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className={`absolute left-0 top-full mt-2 min-w-[200px] rounded-xl p-2 shadow-2xl z-50 ${
+                              theme === 'dark'
+                                ? 'bg-gray-900/95 backdrop-blur-lg border border-gray-800'
+                                : 'bg-white/95 backdrop-blur-lg border border-gray-200'
+                            }`}
+                          >
+                            {item.dropdown.map((subItem) => (
+                              <button
+                                key={subItem.id}
+                                onClick={() => scrollToSection(subItem.id)}
+                                className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 mb-1 last:mb-0 ${
+                                  theme === 'dark'
+                                    ? 'text-gray-300 hover:bg-gray-800/50 hover:text-white'
+                                    : 'text-gray-700 hover:bg-gray-100/50 hover:text-gray-900'
+                                }`}
+                              >
+                                <div className="font-medium mb-1">{subItem.label}</div>
+                                <div className={`text-xs ${
+                                  theme === 'dark' ? 'text-gray-500' : 'text-gray-500'
+                                }`}>
+                                  {subItem.desc}
+                                </div>
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   ))}
                 </div>
               </div>
 
-              {/* Boutons d'action à droite */}
+              {/* Boutons à droite */}
               <div className="flex items-center gap-2 md:gap-3">
-                {/* Bouton WhatsApp - UNIQUEMENT sur desktop (lg et plus) */}
+                {/* Bouton Inscription avec RGB orange */}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={handleWhatsAppClick}
-                  className="hidden lg:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-lg font-semibold shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 transition-all duration-300"
+                  onClick={handleInscription}
+                  className="hidden lg:flex items-center gap-2 px-4 py-2 font-bold rounded-lg transition-all duration-300 shadow-lg"
+                  style={{
+                    background: 'linear-gradient(135deg, rgb(255, 165, 0) 0%, rgb(255, 140, 0) 25%, rgb(255, 69, 0) 50%, rgb(255, 99, 71) 100%)',
+                    color: 'white',
+                    border: 'none'
+                  }}
                 >
-                  <MessageCircle size={18} />
-                  <span>WhatsApp</span>
+                  <UserPlus className="w-4 h-4" />
+                  <span>Rejoindre</span>
                 </motion.button>
 
                 {/* Bouton thème */}
@@ -179,12 +269,11 @@ export default function Navbar() {
                       ? 'bg-gray-800 text-amber-300 hover:bg-gray-700'
                       : 'bg-gray-100 text-amber-600 hover:bg-gray-200'
                   }`}
-                  aria-label={theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
                 >
-                  {theme === 'dark' ? <Sun size={18} className="md:w-5 md:h-5" /> : <Moon size={18} className="md:w-5 md:h-5" />}
+                  {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                 </motion.button>
 
-                {/* Bouton menu hamburger - VISIBLE sur mobile et tablette */}
+                {/* Bouton menu mobile */}
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -193,9 +282,8 @@ export default function Navbar() {
                       ? 'text-gray-300 hover:bg-gray-800'
                       : 'text-gray-600 hover:bg-gray-100'
                   }`}
-                  aria-label="Ouvrir le menu de navigation"
                 >
-                  {isMenuOpen ? <X size={20} className="md:w-6 md:h-6" /> : <Menu size={20} className="md:w-6 md:h-6" />}
+                  {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </motion.button>
               </div>
             </div>
@@ -203,124 +291,171 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Menu sidebar - VISIBLE sur mobile et tablette */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div 
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          
-          {/* Menu sidebar */}
-          <div className={`absolute right-0 top-0 h-full w-80 max-w-full shadow-2xl ${
-            theme === 'dark'
-              ? 'bg-gradient-to-b from-gray-900 to-gray-950'
-              : 'bg-gradient-to-b from-white to-gray-50'
-          }`}>
-            {/* En-tête du menu */}
-            <div className={`p-6 border-b ${
-              theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
-            }`}>
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    theme === 'dark'
-                      ? 'bg-gradient-to-br from-orange-500 to-amber-500'
-                      : 'bg-gradient-to-br from-orange-400 to-amber-400'
-                  }`}>
-                    <Sparkles className="text-white" size={24} />
-                  </div>
-                  <div>
-                    <h3 className={`font-bold text-lg ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-900'
+      {/* Menu mobile */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 lg:hidden"
+          >
+            <div 
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              onClick={() => setIsMenuOpen(false)}
+            />
+            
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: "spring", damping: 30 }}
+              className={`absolute right-0 top-0 h-full w-80 max-w-full shadow-2xl ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-b from-gray-900 to-black'
+                  : 'bg-gradient-to-b from-white to-gray-50'
+              }`}
+            >
+              {/* En-tête */}
+              <div className={`p-6 border-b ${
+                theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
+              }`}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-br from-orange-500 to-red-600'
+                        : 'bg-gradient-to-br from-orange-400 to-red-500'
                     }`}>
-                      Média Plus Créa
-                    </h3>
-                    <p className={`text-sm ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                    }`}>
-                      Menu de navigation
-                    </p>
+                      <Flame className="text-white" size={24} />
+                    </div>
+                    <div>
+                      <h3 className={`font-bold text-lg ${
+                        theme === 'dark' ? 'text-white' : 'text-gray-900'
+                      }`}>
+                        IronForce Pro
+                      </h3>
+                      <p className={`text-sm ${
+                        theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
+                        Menu de navigation
+                      </p>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`p-2 rounded-lg ${
+                      theme === 'dark'
+                        ? 'text-gray-400 hover:text-white hover:bg-gray-800'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
+                  >
+                    <X size={24} />
+                  </button>
                 </div>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`p-2 rounded-lg ${
-                    theme === 'dark'
-                      ? 'text-gray-400 hover:text-white hover:bg-gray-800'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
-                  aria-label="Fermer le menu"
-                >
-                  <X size={24} />
-                </button>
               </div>
-            </div>
 
-            {/* Navigation dans le sidebar */}
-            <div className="p-6 space-y-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
+              {/* Navigation mobile */}
+              <div className="p-6 space-y-1 overflow-y-auto max-h-[calc(100vh-180px)]">
+                {navItems.map((item) => (
+                  <div key={item.id}>
+                    <button
+                      onClick={() => {
+                        if (item.dropdown) {
+                          toggleDropdown(`mobile-${item.id}`);
+                        } else {
+                          scrollToSection(item.id);
+                          setIsMenuOpen(false);
+                        }
+                      }}
+                      className={`w-full text-left p-4 rounded-xl transition-all duration-200 flex items-center justify-between ${
+                        activeSection === item.id
+                          ? theme === 'dark'
+                            ? 'bg-gradient-to-r from-orange-500/20 to-red-600/10 text-orange-400'
+                            : 'bg-gradient-to-r from-orange-500/10 to-red-500/5 text-orange-600'
+                          : theme === 'dark'
+                            ? 'text-gray-300 hover:bg-gray-800/50'
+                            : 'text-gray-600 hover:bg-gray-100/50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2 rounded-lg ${
+                          theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'
+                        }`}>
+                          <div className="text-orange-500">
+                            {item.icon}
+                          </div>
+                        </div>
+                        <span className="font-medium">{item.label}</span>
+                      </div>
+                      {item.dropdown && (
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
+                          openDropdown === `mobile-${item.id}` ? 'rotate-180' : ''
+                        } ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`} />
+                      )}
+                    </button>
+
+                    {/* Sous-menu mobile */}
+                    {item.dropdown && openDropdown === `mobile-${item.id}` && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className={`ml-12 pl-4 border-l-2 ${
+                          theme === 'dark' ? 'border-gray-800' : 'border-gray-200'
+                        }`}
+                      >
+                        <div className="space-y-1 py-2">
+                          {item.dropdown.map((subItem) => (
+                            <button
+                              key={subItem.id}
+                              onClick={() => {
+                                scrollToSection(subItem.id);
+                                setIsMenuOpen(false);
+                              }}
+                              className={`w-full text-left p-3 rounded-lg transition-all duration-200 ${
+                                theme === 'dark'
+                                  ? 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
+                              }`}
+                            >
+                              <div className="font-medium mb-1">{subItem.label}</div>
+                              <div className={`text-xs ${
+                                theme === 'dark' ? 'text-gray-600' : 'text-gray-500'
+                              }`}>
+                                {subItem.desc}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+                ))}
+
+                {/* Bouton Inscription mobile */}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    scrollToSection(item.id);
+                    handleInscription();
                     setIsMenuOpen(false);
                   }}
-                  className={`w-full text-left p-4 rounded-xl transition-all duration-200 ${
-                    activeSection === item.id
-                      ? theme === 'dark'
-                        ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/10 text-orange-400'
-                        : 'bg-gradient-to-r from-orange-500/10 to-amber-500/5 text-orange-600'
-                      : theme === 'dark'
-                        ? 'text-gray-300 hover:bg-gray-800/50'
-                        : 'text-gray-600 hover:bg-gray-100/50'
-                  }`}
+                  className="w-full mt-6 p-4 font-bold rounded-xl transition-all duration-300 shadow-lg flex items-center justify-center gap-3"
+                  style={{
+                    background: 'linear-gradient(135deg, rgb(255, 165, 0) 0%, rgb(255, 140, 0) 25%, rgb(255, 69, 0) 50%, rgb(255, 99, 71) 100%)',
+                    color: 'white',
+                    border: 'none'
+                  }}
                 >
-                  <span className="font-medium">{item.label}</span>
-                </button>
-              ))}
-
-              {/* WhatsApp dans le sidebar mobile/tablette */}
-              <button
-                onClick={() => {
-                  handleWhatsAppClick();
-                  setIsMenuOpen(false);
-                }}
-                className="w-full mt-6 bg-gradient-to-r from-orange-500 to-amber-500 text-white p-4 rounded-xl font-semibold flex items-center justify-center gap-3 shadow-lg shadow-orange-500/25"
-              >
-                <MessageCircle size={20} />
-                Contacter sur WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Indicateur de section (scroll indicator) */}
-      <div className="fixed left-1/2 transform -translate-x-1/2 bottom-6 z-40 hidden lg:block">
-        <div className={`flex gap-1.5 p-2 rounded-full backdrop-blur-md ${
-          theme === 'dark'
-            ? 'bg-gray-900/50 border border-gray-800/50'
-            : 'bg-white/50 border border-gray-200/50'
-        }`}>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                activeSection === item.id
-                  ? theme === 'dark'
-                    ? 'bg-orange-500 w-8'
-                    : 'bg-orange-500 w-8'
-                  : theme === 'dark'
-                    ? 'bg-gray-700 hover:bg-gray-600'
-                    : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-              aria-label={`Aller à ${item.label}`}
-            />
-          ))}
-        </div>
-      </div>
+                  <UserPlus className="w-5 h-5" />
+                  Rejoindre maintenant
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
