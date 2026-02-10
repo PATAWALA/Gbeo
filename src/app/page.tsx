@@ -103,7 +103,7 @@ export default function Home() {
   {/* Background image - Visible à 100% */}
   <div className="absolute inset-0 z-0">
     <Image
-      src="/images/fond0.jpg"  
+      src="/images/fond1.jpg"  
       alt="Background IronForce Pro - Athlète en musculation"
       fill
       className="object-cover"  
